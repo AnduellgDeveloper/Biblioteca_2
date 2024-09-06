@@ -7,6 +7,7 @@ public class Bibliotecario extends Empleado {
     public List<ItemBiblioteca> inventario = new ArrayList<>();
 
 
+
     public Bibliotecario(String nombre, int idEmpleado) {
         super(nombre, idEmpleado);
 

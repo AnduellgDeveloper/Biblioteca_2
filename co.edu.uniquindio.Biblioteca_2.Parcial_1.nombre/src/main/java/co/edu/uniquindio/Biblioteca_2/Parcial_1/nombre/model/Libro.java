@@ -1,10 +1,15 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Libro extends ItemBiblioteca {
     private String autor;
     private int isbn;
     private String estado;
+    private List<Libro> listaLibros = new ArrayList<>();
+
     public Libro(String titulo, String autor, int isbn) {
         super(titulo);
         this.autor = autor;
