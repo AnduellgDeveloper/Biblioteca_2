@@ -5,7 +5,7 @@ public interface IGestionInventario {
     void agregarItem();
     void removerItem();
     void mostrarInventario();
-
+    void mostrarLibroPorTitulo ();
 
 
 

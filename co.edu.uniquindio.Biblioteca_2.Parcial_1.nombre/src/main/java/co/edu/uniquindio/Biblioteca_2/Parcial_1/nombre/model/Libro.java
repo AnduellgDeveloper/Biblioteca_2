@@ -41,18 +41,4 @@ public class Libro extends ItemBiblioteca {
         this.estado = estado;
     }
 
-    @Override
-    public void mostrarDetalles() {
-
-    }
-
-    @Override
-    public void mostrarItem() {
-
-    }
-
-    @Override
-    public void mostrarArchivo() {
-
-    }
 }

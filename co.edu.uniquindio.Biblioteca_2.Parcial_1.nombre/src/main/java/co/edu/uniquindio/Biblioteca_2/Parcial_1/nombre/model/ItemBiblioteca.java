@@ -8,9 +8,7 @@ public abstract class  ItemBiblioteca {
     public String getTitulo() {
         return titulo; 
     }
-    public abstract void mostrarDetalles();
-    public abstract void mostrarItem();
-    public abstract void mostrarArchivo();
+
 
 
 }

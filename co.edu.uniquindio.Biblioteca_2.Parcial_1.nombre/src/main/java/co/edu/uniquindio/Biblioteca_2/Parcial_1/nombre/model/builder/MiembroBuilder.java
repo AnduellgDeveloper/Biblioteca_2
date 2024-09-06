@@ -7,6 +7,5 @@ public class MiembroBuilder {
      MiembroBuilder (String nombre, int cedula){
         this.nombre = nombre;
         this.cedula = cedula;
-        return;
     }
 }
