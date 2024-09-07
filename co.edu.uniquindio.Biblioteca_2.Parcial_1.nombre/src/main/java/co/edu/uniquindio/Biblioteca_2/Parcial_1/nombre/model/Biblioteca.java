@@ -4,6 +4,7 @@ import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services.IGestionInventar
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services.IMiembroCrud;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class Biblioteca implements IGestionInventario, IMiembroCrud {
@@ -68,7 +69,7 @@ public class Biblioteca implements IGestionInventario, IMiembroCrud {
     private Miembro obtenerMiembro(String cedula) {
         Miembro miembroExistente = null;
         for (Miembro miembro: getListaMiembros()) {
-            if(miembro.getCedula().equals(cedula)){
+            if(Objects.equals(miembro.getCedula(), cedula)){
                 miembroExistente = miembro;
                 break;
             }

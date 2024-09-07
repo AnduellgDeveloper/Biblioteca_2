@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Prestamo {
+    public static Prestamo builder;
     private Libro libro;
     private Miembro miembro;
     private String estado;
@@ -15,7 +16,7 @@ public class Prestamo {
     private static List<Prestamo> prestamosActivos = new ArrayList<>();
     private static List<Prestamo> historialPrestamos = new ArrayList<>();
 
-    public Prestamo(Libro libro, Miembro miembro) {
+    public Prestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         this.libro = libro;
         this.miembro = miembro;
         this.fechaPrestamo = LocalDateTime.now();
@@ -25,46 +26,9 @@ public class Prestamo {
         prestamosActivos.add(this);
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
-    }
-
-    public void setMiembro(Miembro miembro) {
-        this.miembro = miembro;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void setFechaPrestamo(LocalDateTime fechaPrestamo) {
-        this.fechaPrestamo = fechaPrestamo;
-    }
-
-    public void setFechaDevolucion(LocalDateTime fechaDevolucion) {
-        this.fechaDevolucion = fechaDevolucion;
-    }
-
-    public static List<Prestamo> getPrestamosActivos() {
-        return prestamosActivos;
-    }
-
-    public static void setPrestamosActivos(List<Prestamo> prestamosActivos) {
-        Prestamo.prestamosActivos = prestamosActivos;
-    }
-
-    public static List<Prestamo> getHistorialPrestamos() {
-        return historialPrestamos;
-    }
-
-    public static void setHistorialPrestamos(List<Prestamo> historialPrestamos) {
-        Prestamo.historialPrestamos = historialPrestamos;
-    }
-
+    public String getEstado() {return estado;}
+    public static List<Prestamo> getPrestamosActivos() {return prestamosActivos;}
+    public static List<Prestamo> getHistorialPrestamos() {return historialPrestamos;}
     public Libro getLibro() {
         return libro;
     }
