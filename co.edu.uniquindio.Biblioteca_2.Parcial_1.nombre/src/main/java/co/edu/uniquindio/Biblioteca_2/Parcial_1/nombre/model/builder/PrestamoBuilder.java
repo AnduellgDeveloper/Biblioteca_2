@@ -22,19 +22,19 @@ public class PrestamoBuilder {
     }
     public PrestamoBuilder miembro (Miembro miembro){
         this.miembro = miembro;
-        return this; //Instancia actual de ClienteBuilder
+        return this;
     }
     public PrestamoBuilder estado(String estado) {
         this.estado = estado;
-        return this; //Instancia actual de ClienteBuilder
+        return this;
     }
     public PrestamoBuilder fechaPrestamo (LocalDateTime fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
-        return this; //Instancia actual de ClienteBuilder
+        return this;
     }
     public PrestamoBuilder fechaDevolucion (LocalDateTime fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
-        return this; //Instancia actual de ClienteBuilder
+        return this;
     }
 
 }
