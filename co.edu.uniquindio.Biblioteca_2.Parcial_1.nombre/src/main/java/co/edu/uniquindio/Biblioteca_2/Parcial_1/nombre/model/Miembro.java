@@ -1,6 +1,7 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model;
 
 
+import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.builder.MiembroBuilder;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services.IMiembroCrud;
 
 public class Miembro implements IMiembroCrud{
@@ -12,20 +13,13 @@ public class Miembro implements IMiembroCrud{
         this.nombre = nombre;
         this.cedula = cedula;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public static MiembroBuilder builder(){
+        return new MiembroBuilder();
     }
 
-    public int getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
-    }
-    public String getNombre() {
-        return nombre;
-    }
+    public int getCedula() {return cedula;}
+    public String getNombre() {return nombre;}
 
     @Override
     public boolean crearMiembro(String nombre, int cedula) {

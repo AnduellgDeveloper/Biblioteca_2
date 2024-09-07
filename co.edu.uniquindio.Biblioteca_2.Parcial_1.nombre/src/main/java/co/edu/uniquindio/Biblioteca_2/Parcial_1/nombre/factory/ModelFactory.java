@@ -24,10 +24,7 @@ public class ModelFactory {
         return modelFactory;
     }
 
-    @Override
-    public boolean agregarItem() {
-        return empresaTransporte.eliminarPropietario(numeroIdentificacion);
-    }
+
 
     public static void inicializarDatos() {
         biblioteca = new Biblioteca();

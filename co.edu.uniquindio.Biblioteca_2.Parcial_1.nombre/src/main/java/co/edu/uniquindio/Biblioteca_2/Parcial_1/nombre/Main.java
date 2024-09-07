@@ -9,4 +9,18 @@ public class Main {
     public static void main(String[] args){
         ModelFactory modelFactory = ModelFactory.getInstance();
     }
+    private static void ejemplo1() {
+        Miembro cliente1 = Miembro.builder()
+                .nombre("juan")
+                .cedula(1077722942)
+                .build();
+        Miembro cliente2 = Miembro.builder()
+                .nombre("juan")
+                .cedula(1077722942)
+                .build();
+
+
+
+
+    }
 }

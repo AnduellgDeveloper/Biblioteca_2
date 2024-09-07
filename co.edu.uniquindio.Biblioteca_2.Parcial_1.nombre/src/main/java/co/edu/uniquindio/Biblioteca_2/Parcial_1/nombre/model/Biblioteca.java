@@ -15,13 +15,7 @@ public class Biblioteca implements IGestionInventario, IMiembroCrud {
 
 
     @Override
-    public void agregarItem(Libro libro) {
-        if(libro != null) {
-            listaLibros.add(libro);
-            System.out.println("El libro " + libro.getTitulo() + " ha sido agregado.");
-        } else {
-            System.out.println("No se puede agregar un libro nulo.");
-        }
+    public void agregarItem() {
     }
 
     @Override
