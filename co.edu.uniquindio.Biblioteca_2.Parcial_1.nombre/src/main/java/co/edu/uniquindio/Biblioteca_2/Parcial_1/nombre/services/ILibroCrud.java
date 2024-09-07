@@ -1,7 +1,4 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services;
-
-
-
 public interface ILibroCrud {
     boolean crearLibro(String titulo, String autor, int isbn);
     String verLibro (String titulo, String autor, int isbn);

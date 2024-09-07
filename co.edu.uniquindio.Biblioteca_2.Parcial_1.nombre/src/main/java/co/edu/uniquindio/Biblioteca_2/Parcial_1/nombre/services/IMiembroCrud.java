@@ -1,5 +1,4 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services;
-
 public interface IMiembroCrud {
     boolean crearMiembro (String nombre, int cedula);
     boolean eliminarMiembro (int cedula);
