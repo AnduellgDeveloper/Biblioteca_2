@@ -42,7 +42,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
             listaMiembros.remove(miembro);
             return true;
         }
-        return false;
+        return true;
     }
     @Override
     public boolean actualizarMiembro(String nombre, String cedulaActual, String cedulaNueva) {
@@ -153,6 +153,19 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
+
+    @Override
+    public int buscarLibroIsbn(int isbn) {
+        for (Libro libro : listaLibros) {
+            if (libro.getIsbn() == isbn) {
+
+            }else {
+                return libro.getIsbn();
+            }
+        }
+        return 0;
+    }
+
     private Libro obtenerLibro(int isbn) {
         for (Libro libro : listaLibros) {
             if (libro.getIsbn() == isbn) {

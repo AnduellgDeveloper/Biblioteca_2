@@ -40,7 +40,6 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         Libro libro8 = new Libro("El Principito", "Antoine de Saint-Exupéry", 99887);
         Libro libro9 = new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", 66554);
         Libro libro10 = new Libro("Ficciones", "Jorge Luis Borges", 54321);
-        // Lista de Libros
         listaLibros.add(libro1);
         listaLibros.add(libro2);
         listaLibros.add(libro3);
@@ -51,11 +50,11 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         listaLibros.add(libro8);
         listaLibros.add(libro9);
         listaLibros.add(libro10);
-        //Lista de instancias
+
         Miembro miembro1 = new Miembro("Duvan Felipe", 1);
         Miembro miembro2 = new Miembro("Nicol Marin", 2);
         Miembro miembro3 = new Miembro("Majo Tovar", 3);
-        // Listado de Miembros
+
         listaMiembros.add(miembro1);
         listaMiembros.add(miembro2);
         listaMiembros.add(miembro3);
