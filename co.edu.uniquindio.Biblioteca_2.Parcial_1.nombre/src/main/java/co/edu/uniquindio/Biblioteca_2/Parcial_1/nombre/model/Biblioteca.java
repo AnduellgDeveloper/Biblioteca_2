@@ -184,4 +184,45 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         return null;
     }
 
+    @Override
+    public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
+        Prestamo nuevoPrestamo = new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
+        listaPrestamos.add(nuevoPrestamo);
+        return true; // Se crea el préstamo exitosamente
+    }
+
+    @Override
+    public Prestamo verPrestamo(int idPrestamo) {
+        return obtenerPrestamo(idPrestamo); // Busca y retorna el préstamo por ID
+    }
+
+    @Override
+    public boolean actualizarPrestamo(int idPrestamo, Libro nuevoLibro) {
+        Prestamo prestamo = obtenerPrestamo(idPrestamo);
+        if (prestamo != null) {
+            prestamo.setLibro(nuevoLibro);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean eliminarPrestamo(int idPrestamo) {
+        Prestamo prestamo = obtenerPrestamo(idPrestamo);
+        if (prestamo != null) {
+            listaPrestamos.remove(prestamo);
+            return true;
+        }
+        return false;
+    }
+
+    private Prestamo obtenerPrestamo(int idPrestamo) {
+        for (Prestamo prestamo : listaPrestamos) {
+            if (prestamo.getIdPrestamo() == idPrestamo) {
+                return prestamo;
+            }
+        }
+        return null;
+    }
 }
+
