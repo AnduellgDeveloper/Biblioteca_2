@@ -4,5 +4,5 @@ public interface ILibroCrud {
     String verLibro (String titulo, String autor, int isbn);
     boolean actualizarLibro(int isbn, String nuevoTitulo, String nuevoAutor);
     boolean eliminarLibro(int isbn);
-    int buscarLibroIsbn(int isbn);
+    String buscarLibroIsbn(int isbn);
 }

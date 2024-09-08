@@ -155,17 +155,16 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     }
 
     @Override
-    public int buscarLibroIsbn(int isbn) {
+    public String buscarLibroIsbn(int isbn) {
         for (Libro libro : listaLibros) {
             if (libro.getIsbn() == isbn) {
+                return "El libro encontrado es : " + libro.toString();
 
-            }else {
-                return libro.getIsbn();
             }
         }
-        return 0;
-    }
 
+        return "";
+    }
     private Libro obtenerLibro(int isbn) {
         for (Libro libro : listaLibros) {
             if (libro.getIsbn() == isbn) {

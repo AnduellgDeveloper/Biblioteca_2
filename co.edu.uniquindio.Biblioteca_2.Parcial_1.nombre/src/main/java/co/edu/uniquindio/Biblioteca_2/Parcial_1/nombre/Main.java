@@ -23,6 +23,7 @@ public class Main {
         verLibro(modelFactory);
         actualizarLibro(modelFactory);
         eliminarLibro(modelFactory);
+
     }
     private static void gestionarMiembros(ModelFactory modelFactory) {
         crearMiembro(modelFactory);
@@ -111,6 +112,10 @@ public class Main {
         int cedula = 5678;
         boolean resultado = modelFactory.eliminarMiembro(cedula);
         notificacion(resultado, "Miembro eliminado" + cedula);
+    }
+    private static void buscarLibroIsbn(ModelFactory modelFactory) {
+        int isbn = 1234;
+        String
     }
     // Método para mostrar notificaciones
     private static void notificacion(boolean resultado, String mensaje) {
