@@ -1,12 +1,10 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre;
-
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.factory.ModelFactory;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Libro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Miembro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Prestamo;
-
 import java.time.LocalDateTime;
-
+// Falta organizar la secuencia y los gets para imprimmir
 public class Main {
     public static void main(String[] args) {
         ModelFactory modelFactory = ModelFactory.getInstance();
@@ -14,28 +12,24 @@ public class Main {
         gestionarLibros(modelFactory);
         gestionarMiembros(modelFactory);
     }
-
     private static void gestionarPrestamos(ModelFactory modelFactory) {
         crearPrestamo(modelFactory);
         verPrestamo(modelFactory);
         actualizarPrestamo(modelFactory);
         eliminarPrestamo(modelFactory);
     }
-
     private static void gestionarLibros(ModelFactory modelFactory) {
         crearLibro(modelFactory);
         verLibro(modelFactory);
         actualizarLibro(modelFactory);
         eliminarLibro(modelFactory);
     }
-
     private static void gestionarMiembros(ModelFactory modelFactory) {
         crearMiembro(modelFactory);
         verMiembro(modelFactory);
         actualizarMiembro(modelFactory);
         eliminarMiembro(modelFactory);
     }
-
     // Métodos para CRUD de préstamos
     private static void crearPrestamo(ModelFactory modelFactory) {
         Libro libro = new Libro("Cien Años de Soledad", "Gabriel García Márquez", 12345);
@@ -45,9 +39,8 @@ public class Main {
         boolean resultado = modelFactory.crearPrestamo(libro, miembro, "Activo", fechaPrestamo, fechaDevolucion);
         notificacion(resultado, "Prestamo creado");
     }
-
     private static void verPrestamo(ModelFactory modelFactory) {
-        int idPrestamo = 1; // Asume que este es un ID válido
+        int idPrestamo = 1;
         Prestamo prestamo = modelFactory.verPrestamo(idPrestamo);
         if (prestamo != null) {
             System.out.println("Detalle del préstamo: " + prestamo);
@@ -55,20 +48,18 @@ public class Main {
             System.out.println("No se encontró el préstamo con ID: " + idPrestamo);
         }
     }
-
     private static void actualizarPrestamo(ModelFactory modelFactory) {
-        int idPrestamo = 1; // Asume que este es un ID válido
+        int idPrestamo = 1;
         Libro nuevoLibro = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 6789);
         boolean resultado = modelFactory.actualizarPrestamo(idPrestamo, nuevoLibro);
         notificacion(resultado, "Prestamo actualizado");
     }
 
     private static void eliminarPrestamo(ModelFactory modelFactory) {
-        int idPrestamo = 1; // Asume que este es un ID válido
+        int idPrestamo = 1;
         boolean resultado = modelFactory.eliminarPrestamo(idPrestamo);
         notificacion(resultado, "Prestamo eliminado");
     }
-
     // Métodos para CRUD de libros
     private static void crearLibro(ModelFactory modelFactory) {
         String titulo = "1984";
@@ -77,7 +68,6 @@ public class Main {
         boolean resultado = modelFactory.crearLibro(titulo, autor, isbn);
         notificacion(resultado, "Libro creado");
     }
-
     private static void verLibro(ModelFactory modelFactory) {
         String titulo = "1984";
         String autor = "George Orwell";
@@ -85,21 +75,18 @@ public class Main {
         String libro = modelFactory.verLibro(titulo, autor, isbn);
         System.out.println("Detalle del libro: " + libro);
     }
-
     private static void actualizarLibro(ModelFactory modelFactory) {
-        int isbn = 11223; // ISBN del libro a actualizar
+        int isbn = 11223;
         String nuevoTitulo = "Rebelión en la Granja";
         String nuevoAutor = "George Orwell";
         boolean resultado = modelFactory.actualizarLibro(isbn, nuevoTitulo, nuevoAutor);
         notificacion(resultado, "Libro actualizado");
     }
-
     private static void eliminarLibro(ModelFactory modelFactory) {
         int isbn = 11223; // ISBN del libro a eliminar
         boolean resultado = modelFactory.eliminarLibro(isbn);
         notificacion(resultado, "Libro eliminado");
     }
-
     // Métodos para CRUD de miembros
     private static void crearMiembro(ModelFactory modelFactory) {
         String nombre = "Ana López";
@@ -107,13 +94,11 @@ public class Main {
         boolean resultado = modelFactory.crearMiembro(nombre, cedula);
         notificacion(resultado, "Miembro creado");
     }
-
     private static void verMiembro(ModelFactory modelFactory) {
         String cedula = "5678";
         String miembro = modelFactory.obtenerDatosMiembro(cedula);
         System.out.println("Detalle del miembro: " + miembro);
     }
-
     private static void actualizarMiembro(ModelFactory modelFactory) {
         String nombre = "Ana María López";
         String cedulaActual = "5678";
@@ -121,13 +106,11 @@ public class Main {
         boolean resultado = modelFactory.actualizarMiembro(nombre, cedulaActual, cedulaNueva);
         notificacion(resultado, "Miembro actualizado");
     }
-
     private static void eliminarMiembro(ModelFactory modelFactory) {
         int cedula = 5678;
         boolean resultado = modelFactory.eliminarMiembro(cedula);
         notificacion(resultado, "Miembro eliminado");
     }
-
     // Método para mostrar notificaciones
     private static void notificacion(boolean resultado, String mensaje) {
         if (resultado) {
