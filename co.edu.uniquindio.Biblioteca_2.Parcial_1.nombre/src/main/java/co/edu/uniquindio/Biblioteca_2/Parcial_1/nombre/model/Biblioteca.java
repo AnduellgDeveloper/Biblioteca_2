@@ -1,6 +1,5 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services.*;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,29 +11,21 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     private List<Miembro> listaMiembros = new ArrayList<>();
     private List<Bibliotecario> listaBibliotecarios = new ArrayList<>();
 
-    // Métodos de IGestionInventario
+    //-------------- Métodos de IGestionInventario --------------
     @Override
     public void agregarItem() {
-        // Lógica para agregar un ítem al inventario
     }
-
     @Override
     public void removerItem() {
-        // Lógica para remover un ítem del inventario
     }
-
     @Override
     public void mostrarInventario() {
-        // Lógica para mostrar el inventario
         listaLibros.forEach(System.out::println);
     }
-
     @Override
     public void mostrarLibroPorTitulo() {
-        // Lógica para mostrar libros por título
     }
-
-    // Métodos de IMiembroCrud
+    //-------------- Métodos de IMiembroCrud --------------
     @Override
     public boolean crearMiembro(String nombre, int cedula) {
         if (obtenerMiembro(String.valueOf(cedula)) == null) {
@@ -44,7 +35,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public boolean eliminarMiembro(int cedula) {
         Miembro miembro = obtenerMiembro(String.valueOf(cedula));
@@ -54,7 +44,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public boolean actualizarMiembro(String nombre, String cedulaActual, String cedulaNueva) {
         Miembro miembro = obtenerMiembro(cedulaActual);
@@ -65,7 +54,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public String obtenerDatosMiembro(String cedula) {
         Miembro miembroExistente = obtenerMiembro(cedula);
@@ -74,7 +62,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return "";
     }
-
     private Miembro obtenerMiembro(String cedula) {
         for (Miembro miembro : listaMiembros) {
             if (Objects.equals(String.valueOf(miembro.getCedula()), cedula)) {
@@ -83,7 +70,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
-    // Métodos de IBibliotecarioCrud
+    //-------------- Métodos de IBibliotecarioCrud--------------
     @Override
     public boolean crearBibliotecario(String nombre, int idEmpleado) {
         if (obtenerBibliotecario(idEmpleado) == null) {
@@ -93,7 +80,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public boolean verBibliotecario(String nombre) {
         for (Bibliotecario bibliotecario : listaBibliotecarios) {
@@ -104,7 +90,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public boolean actualizarBibliotecario(int idEmpleadoActual, int idEmpleadoNuevo) {
         Bibliotecario bibliotecario = obtenerBibliotecario(idEmpleadoActual);
@@ -114,7 +99,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public boolean eliminarBibliotecario(int idEmpleado) {
         Bibliotecario bibliotecario = obtenerBibliotecario(idEmpleado);
@@ -124,7 +108,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     private Bibliotecario obtenerBibliotecario(int idEmpleado) {
         for (Bibliotecario bibliotecario : listaBibliotecarios) {
             if (bibliotecario.getIdEmpleado() == idEmpleado) {
@@ -133,8 +116,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
-
-    // Métodos de ILibroCrud
+    //-------------- Métodos de ILibroCrud --------------
     @Override
     public boolean crearLibro(String titulo, String autor, int isbn) {
         if (obtenerLibro(isbn) == null) {
@@ -144,7 +126,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public String verLibro(String titulo, String autor, int isbn) {
         Libro libro = obtenerLibro(isbn);
@@ -153,7 +134,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return "Libro no encontrado";
     }
-
     @Override
     public boolean actualizarLibro(int isbn, String nuevoTitulo, String nuevoAutor) {
         Libro libro = obtenerLibro(isbn);
@@ -164,7 +144,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public boolean eliminarLibro(int isbn) {
         Libro libro = obtenerLibro(isbn);
@@ -174,7 +153,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     private Libro obtenerLibro(int isbn) {
         for (Libro libro : listaLibros) {
             if (libro.getIsbn() == isbn) {
@@ -183,19 +161,16 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
-
     @Override
     public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         Prestamo nuevoPrestamo = new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
         listaPrestamos.add(nuevoPrestamo);
-        return true; // Se crea el préstamo exitosamente
+        return true;
     }
-
     @Override
     public Prestamo verPrestamo(int idPrestamo) {
-        return obtenerPrestamo(idPrestamo); // Busca y retorna el préstamo por ID
+        return obtenerPrestamo(idPrestamo);
     }
-
     @Override
     public boolean actualizarPrestamo(int idPrestamo, Libro nuevoLibro) {
         Prestamo prestamo = obtenerPrestamo(idPrestamo);
@@ -205,7 +180,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public boolean eliminarPrestamo(int idPrestamo) {
         Prestamo prestamo = obtenerPrestamo(idPrestamo);
@@ -215,7 +189,6 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     private Prestamo obtenerPrestamo(int idPrestamo) {
         for (Prestamo prestamo : listaPrestamos) {
             if (prestamo.getIdPrestamo() == idPrestamo) {
@@ -225,4 +198,3 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         return null;
     }
 }
-
