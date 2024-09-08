@@ -62,6 +62,16 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return "";
     }
+
+    @Override
+    public String verMiembros(String nombre, int cedula) {
+        for (Miembro miembro : listaMiembros) {
+            System.out.println("Nombre: " +nombre+"Cedula: "+cedula);
+
+        }
+        return "No hay miembros";
+    }
+
     private Miembro obtenerMiembro(String cedula) {
         for (Miembro miembro : listaMiembros) {
             if (Objects.equals(String.valueOf(miembro.getCedula()), cedula)) {

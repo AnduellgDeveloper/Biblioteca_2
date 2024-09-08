@@ -146,6 +146,11 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     }
 
     @Override
+    public String verMiembros(String nombre, int cedula) {
+        return biblioteca.verMiembros(nombre, cedula);
+    }
+
+    @Override
     public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         return biblioteca.crearPrestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
     }

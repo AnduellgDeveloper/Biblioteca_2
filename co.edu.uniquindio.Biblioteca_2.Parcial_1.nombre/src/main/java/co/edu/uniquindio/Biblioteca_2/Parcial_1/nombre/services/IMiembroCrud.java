@@ -4,4 +4,5 @@ public interface IMiembroCrud {
     boolean eliminarMiembro (int cedula);
     boolean actualizarMiembro (String nombre, String cedulaActual, String cedulaNueva);
     String obtenerDatosMiembro (String cedula);
+    String verMiembros(String nombre, int cedula);
 }
