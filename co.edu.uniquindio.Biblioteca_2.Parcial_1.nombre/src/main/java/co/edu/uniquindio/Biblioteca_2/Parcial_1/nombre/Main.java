@@ -30,6 +30,7 @@ public class Main {
         verMiembro(modelFactory);
         actualizarMiembro(modelFactory);
         eliminarMiembro(modelFactory);
+        verMiembros(modelFactory);
     }
     // Métodos para CRUD de préstamos
     private static void crearPrestamo(ModelFactory modelFactory) {
@@ -113,9 +114,13 @@ public class Main {
         boolean resultado = modelFactory.eliminarMiembro(cedula);
         notificacion(resultado, "Miembro eliminado" + cedula);
     }
+    private static void verMiembros(ModelFactory modelFactory) {
+        String resultado = modelFactory.verMiembros();
+        System.out.println("Lista de Miembros:\n" + resultado);
+    }
+
     private static void buscarLibroIsbn(ModelFactory modelFactory) {
         int isbn = 1234;
-        String
     }
     // Método para mostrar notificaciones
     private static void notificacion(boolean resultado, String mensaje) {
