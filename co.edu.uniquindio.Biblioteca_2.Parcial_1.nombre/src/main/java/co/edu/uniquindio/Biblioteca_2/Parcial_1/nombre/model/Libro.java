@@ -36,4 +36,13 @@ public class Libro extends ItemBiblioteca {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "Título='" + titulo + '\'' +
+                ", Autor='" + autor + '\'' +
+                ", ISBN=" + isbn +
+                '}';
+
+    }
 }

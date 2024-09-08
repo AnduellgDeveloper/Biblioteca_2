@@ -3,27 +3,29 @@ package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.factory;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Biblioteca;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Libro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Miembro;
+import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Prestamo;
+import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModelFactory {
+public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
     private static ModelFactory modelFactory;
     private static Biblioteca biblioteca;
     private static List<Libro> listaLibros = new ArrayList<>();
     private static List<Miembro> listaMiembros = new ArrayList<>();
 
-    private ModelFactory(){
+    private ModelFactory() {
         inicializarDatos();
     }
 
     public static ModelFactory getInstance() {
-        if(modelFactory == null) {
+        if (modelFactory == null) {
             modelFactory = new ModelFactory();
         }
         return modelFactory;
     }
-
 
 
     public static void inicializarDatos() {
@@ -59,6 +61,103 @@ public class ModelFactory {
         listaMiembros.add(miembro3);
     }
 
+    @Override
+    public boolean crearBibliotecario(String nombre, int idEmpleado) {
+        return biblioteca.crearBibliotecario(nombre, idEmpleado);
+    }
 
+    @Override
+    public boolean verBibliotecario(String nombre) {
+        return biblioteca.verBibliotecario(nombre);
+    }
 
+    @Override
+    public boolean actualizarBibliotecario(int idEmpleadoActual, int idEmpleadoNuevo) {
+        return biblioteca.actualizarBibliotecario(idEmpleadoActual, idEmpleadoNuevo);
+    }
+
+    @Override
+    public boolean eliminarBibliotecario(int idEmpleado) {
+        return biblioteca.eliminarBibliotecario(idEmpleado);
+    }
+
+    @Override
+    public void agregarItem() {
+        biblioteca.agregarItem();
+    }
+
+    @Override
+    public void removerItem() {
+        biblioteca.removerItem();
+    }
+
+    @Override
+    public void mostrarInventario() {
+        biblioteca.mostrarInventario();
+    }
+
+    @Override
+    public void mostrarLibroPorTitulo() {
+        biblioteca.mostrarLibroPorTitulo();
+    }
+
+    @Override
+    public boolean crearLibro(String titulo, String autor, int isbn) {
+        return biblioteca.crearLibro(titulo, autor, isbn);
+    }
+
+    @Override
+    public String verLibro(String titulo, String autor, int isbn) {
+        return biblioteca.verLibro(titulo, autor, isbn);
+    }
+
+    @Override
+    public boolean actualizarLibro(int isbn, String nuevoTitulo, String nuevoAutor) {
+        return biblioteca.actualizarLibro(isbn, nuevoTitulo, nuevoAutor);
+    }
+
+    @Override
+    public boolean eliminarLibro(int isbn) {
+        return biblioteca.eliminarLibro(isbn);
+    }
+
+    @Override
+    public boolean crearMiembro(String nombre, int cedula) {
+        return biblioteca.crearMiembro(nombre, cedula);
+    }
+
+    @Override
+    public boolean eliminarMiembro(int cedula) {
+        return biblioteca.eliminarMiembro(cedula);
+    }
+
+    @Override
+    public boolean actualizarMiembro(String nombre, String cedulaActual, String cedulaNueva) {
+        return biblioteca.actualizarMiembro(nombre, cedulaActual, cedulaNueva);
+    }
+
+    @Override
+    public String obtenerDatosMiembro(String cedula) {
+        return biblioteca.obtenerDatosMiembro(cedula);
+    }
+
+    @Override
+    public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
+        return biblioteca.crearPrestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
+    }
+
+    @Override
+    public Prestamo verPrestamo(int idPrestamo) {
+        return biblioteca.verPrestamo(idPrestamo);
+    }
+
+    @Override
+    public boolean actualizarPrestamo(int idPrestamo, Libro nuevoLibro) {
+        return biblioteca.actualizarPrestamo(idPrestamo, nuevoLibro);
+    }
+
+    @Override
+    public boolean eliminarPrestamo(int idPrestamo) {
+        return biblioteca.eliminarPrestamo(idPrestamo);
+    }
 }
