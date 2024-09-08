@@ -1,5 +1,4 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,6 +23,42 @@ public class Prestamo {
         this.estado = "activo";
         libro.setEstado("prestado");
         prestamosActivos.add(this);
+    }
+
+    public static Prestamo getBuilder() {
+        return builder;
+    }
+
+    public static void setBuilder(Prestamo builder) {
+        Prestamo.builder = builder;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
+
+    public void setMiembro(Miembro miembro) {
+        this.miembro = miembro;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setFechaPrestamo(LocalDateTime fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    public void setFechaDevolucion(LocalDateTime fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public static void setPrestamosActivos(List<Prestamo> prestamosActivos) {
+        Prestamo.prestamosActivos = prestamosActivos;
+    }
+
+    public static void setHistorialPrestamos(List<Prestamo> historialPrestamos) {
+        Prestamo.historialPrestamos = historialPrestamos;
     }
 
     public String getEstado() {return estado;}

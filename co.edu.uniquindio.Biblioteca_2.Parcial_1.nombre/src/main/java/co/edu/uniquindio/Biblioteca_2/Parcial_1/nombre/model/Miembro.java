@@ -26,16 +26,20 @@ public class Miembro implements IMiembroCrud{
         return false;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
     @Override
     public boolean eliminarMiembro(int cedula) {
         return false;
     }
-
     @Override
     public boolean actualizarMiembro(String nombre, String cedulaActual, String cedulaNueva) {
         return false;
     }
-
     @Override
     public String obtenerDatosMiembro(String cedula) {
         return "";
