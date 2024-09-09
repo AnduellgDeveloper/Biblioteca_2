@@ -34,7 +34,7 @@ public class Main {
     }
     // Métodos para CRUD de préstamos
     private static void crearPrestamo(ModelFactory modelFactory) {
-        Libro libro = new Libro("Cien Años de Soledad", "Gabriel García Márquez", 12345);
+        Libro libro = new Libro("Cien Años de Soledad", "Gabriel García Márquez","Realismo magico", 12345);
         Miembro miembro = new Miembro("Juan Pérez", 9876);
         LocalDateTime fechaPrestamo = LocalDateTime.now();
         LocalDateTime fechaDevolucion = null;
@@ -52,14 +52,14 @@ public class Main {
     }
     private static void actualizarPrestamo(ModelFactory modelFactory) {
         int idPrestamo = 1;
-        Libro nuevoLibro = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 6789);
+        Libro nuevoLibro = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes","Novela", 6789);
         boolean resultado = modelFactory.actualizarPrestamo(idPrestamo, nuevoLibro);
         notificacion(resultado, "Prestamo actualizado"+ nuevoLibro);
     }
 
     private static void eliminarPrestamo(ModelFactory modelFactory) {
         int idPrestamo = 1;
-        Libro eliminarLibro = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 6789);
+        Libro eliminarLibro = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes","Novela", 6789);
         boolean resultado = modelFactory.eliminarPrestamo(idPrestamo);
         notificacion(resultado, "Prestamo eliminado" + eliminarLibro );
     }
@@ -67,15 +67,17 @@ public class Main {
     private static void crearLibro(ModelFactory modelFactory) {
         String titulo = "1984";
         String autor = "George Orwell";
+        String genero= "Distopia";
         int isbn = 11223;
-        boolean resultado = modelFactory.crearLibro(titulo, autor, isbn);
-        notificacion(resultado, "Libro creado " + titulo + "de" + autor);
+        boolean resultado = modelFactory.crearLibro(titulo, autor,genero, isbn);
+        notificacion(resultado, "Libro creado " + titulo + "de" + autor + "del genero"+ genero);
     }
     private static void verLibro(ModelFactory modelFactory) {
         String titulo = "1984";
         String autor = "George Orwell";
+        String genero= "Distopia";
         int isbn = 11223;
-        String libro = modelFactory.verLibro(titulo, autor, isbn);
+        String libro = modelFactory.verLibro(titulo, autor, genero,isbn);
         System.out.println("Detalle del libro: " + libro);
     }
     private static void actualizarLibro(ModelFactory modelFactory) {

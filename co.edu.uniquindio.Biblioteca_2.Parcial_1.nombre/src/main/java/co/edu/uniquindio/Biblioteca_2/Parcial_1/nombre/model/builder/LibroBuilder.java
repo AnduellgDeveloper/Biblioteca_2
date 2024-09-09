@@ -4,11 +4,12 @@ import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Libro;
 public class LibroBuilder {
     protected String titulo;
     protected String autor;
+    protected String genero;
     protected int isbn;
     protected String estado = "disponible";  //Valor por defecto
 
     public Libro build(){
-        return new Libro(titulo, autor, isbn);
+        return new Libro(titulo, autor,genero, isbn);
     }
     public LibroBuilder titulo(String titulo) {
         this.titulo = titulo;
@@ -16,6 +17,10 @@ public class LibroBuilder {
     }
     public LibroBuilder autor(String autor) {
         this.autor = autor;
+        return this;
+    }
+    public LibroBuilder genero(String genero){
+        this.genero= genero;
         return this;
     }
     public LibroBuilder isbn(int isbn) {

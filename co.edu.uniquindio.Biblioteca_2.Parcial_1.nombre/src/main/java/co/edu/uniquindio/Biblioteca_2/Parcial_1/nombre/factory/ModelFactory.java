@@ -30,16 +30,16 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
 
     public static void inicializarDatos() {
         biblioteca = new Biblioteca();
-        Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri", 4589);
-        Libro libro2 = new Libro("Boulevard", "Flor M. Salvador", 89021);
-        Libro libro3 = new Libro("Cien Años de Soledad", "Gabriel García Márquez", 12345);
-        Libro libro4 = new Libro("El Amor en los Tiempos del Cólera", "Gabriel García Márquez", 67890);
-        Libro libro5 = new Libro("1984", "George Orwell", 11223);
-        Libro libro6 = new Libro("Orgullo y Prejuicio", "Jane Austen", 44556);
-        Libro libro7 = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 77889);
-        Libro libro8 = new Libro("El Principito", "Antoine de Saint-Exupéry", 99887);
-        Libro libro9 = new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", 66554);
-        Libro libro10 = new Libro("Ficciones", "Jorge Luis Borges", 54321);
+        Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri","Poesia epica",  4589);
+        Libro libro2 = new Libro("Boulevard", "Flor M. Salvador", "Romance juvenil", 89021);
+        Libro libro3 = new Libro("Cien Años de Soledad", "Gabriel García Márquez", "Realismo magico", 12345);
+        Libro libro4 = new Libro("El Amor en los Tiempos del Cólera", "Gabriel García Márquez", "Romance", 67890);
+        Libro libro5 = new Libro("1984", "George Orwell","Distopia", 11223);
+        Libro libro6 = new Libro("Orgullo y Prejuicio", "Jane Austen","Romance clasico", 44556);
+        Libro libro7 = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", "Novela",77889);
+        Libro libro8 = new Libro("El Principito", "Antoine de Saint-Exupéry","Fabula", 99887);
+        Libro libro9 = new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", "Misterio",66554);
+        Libro libro10 = new Libro("Ficciones", "Jorge Luis Borges","Ficcion", 54321);
         listaLibros.add(libro1);
         listaLibros.add(libro2);
         listaLibros.add(libro3);
@@ -101,13 +101,13 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     }
 
     @Override
-    public boolean crearLibro(String titulo, String autor, int isbn) {
-        return biblioteca.crearLibro(titulo, autor, isbn);
+    public boolean crearLibro(String titulo, String autor, String genero, int isbn) {
+        return biblioteca.crearLibro(titulo, autor, genero,isbn);
     }
 
     @Override
-    public String verLibro(String titulo, String autor, int isbn) {
-        return biblioteca.verLibro(titulo, autor, isbn);
+    public String verLibro(String titulo, String autor, String genero, int isbn) {
+        return biblioteca.verLibro(titulo, autor, genero, isbn);
     }
 
     @Override

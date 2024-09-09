@@ -134,16 +134,16 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     }
     //-------------- Métodos de ILibroCrud --------------
     @Override
-    public boolean crearLibro(String titulo, String autor, int isbn) {
+    public boolean crearLibro(String titulo, String autor, String genero,int isbn) {
         if (obtenerLibro(isbn) == null) {
-            Libro nuevoLibro = new Libro(titulo, autor, isbn);
+            Libro nuevoLibro = new Libro(titulo, autor, genero,isbn);
             listaLibros.add(nuevoLibro);
             return true;
         }
         return false;
     }
     @Override
-    public String verLibro(String titulo, String autor, int isbn) {
+    public String verLibro(String titulo, String autor,String genero, int isbn) {
         Libro libro = obtenerLibro(isbn);
         if (libro != null) {
             return libro.toString();
