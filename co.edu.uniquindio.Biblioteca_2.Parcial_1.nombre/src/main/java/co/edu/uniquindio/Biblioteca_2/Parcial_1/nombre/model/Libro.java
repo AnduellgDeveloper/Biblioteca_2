@@ -19,8 +19,13 @@ public class Libro extends ItemBiblioteca {
     public void setAutor(String autor) {
         this.autor = autor;
     }
-    public String getGenero(){return  genero;}
-    public void setGenero(String genero){this.genero= genero;}
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
     public int getIsbn() {
         return isbn;
     }
@@ -43,4 +48,6 @@ public class Libro extends ItemBiblioteca {
                 '}';
 
     }
+
+    
 }

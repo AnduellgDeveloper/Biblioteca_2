@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
     private List<Prestamo> listaPrestamos = new ArrayList<>();
@@ -189,6 +190,16 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
+    
+    //public List<String> obtenerGenerosLiterarios() {
+        //List<String> generos = new ArrayList<>();
+        //for (Libro libro : listaLibros) {
+           // if (!generos.contains(libro.getGenero())) {
+             //   generos.add(libro.getGenero());
+           // }
+        //}
+       // return generos;
+    ///
     @Override
     public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         Prestamo nuevoPrestamo = new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);

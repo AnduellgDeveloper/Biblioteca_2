@@ -124,7 +124,8 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     public String buscarLibroIsbn(int isbn) {return biblioteca.buscarLibroIsbn(isbn);
 
     }
-
+    
+    
     @Override
     public boolean crearMiembro(String nombre, int cedula) {
         return biblioteca.crearMiembro(nombre, cedula);

@@ -4,6 +4,7 @@ import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Libro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Miembro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Prestamo;
 import java.time.LocalDateTime;
+import java.util.List;
 // Falta organizar la secuencia y los gets para imprimmir
 public class Main {
     public static void main(String[] args) {
@@ -11,6 +12,7 @@ public class Main {
         gestionarPrestamos(modelFactory);
         gestionarLibros(modelFactory);
         gestionarMiembros(modelFactory);
+        
     }
     private static void gestionarPrestamos(ModelFactory modelFactory) {
         crearPrestamo(modelFactory);
@@ -23,6 +25,7 @@ public class Main {
         verLibro(modelFactory);
         actualizarLibro(modelFactory);
         eliminarLibro(modelFactory);
+        //mostrarGenerosLiterarios(modelFactory);
 
     }
     private static void gestionarMiembros(ModelFactory modelFactory) {
@@ -92,6 +95,12 @@ public class Main {
         boolean resultado = modelFactory.eliminarLibro(isbn);
         notificacion(resultado, "Libro eliminado: " +isbn);
     }
+    //private static void mostrarGenerosLiterarios(ModelFactory modelFactory) {
+        //List<String> generos = modelFactory.obtenerGenerosLiterarios();
+        //System.out.println("Géneros literarios disponibles:");
+        //generos.forEach(System.out::println);//
+    
+    
     // Métodos para CRUD de miembros
     private static void crearMiembro(ModelFactory modelFactory) {
         String nombre = "Ana López";
