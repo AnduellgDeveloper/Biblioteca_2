@@ -96,44 +96,38 @@ public class Main {
     }
     private static void mostrarGenerosLiterarios(ModelFactory modelFactory) {
         List<String> generos = modelFactory.mostrarGenerosLiterarios();
-        if (generos.isEmpty()) {
-            System.out.println("No hay géneros literarios disponibles.");
-        } else {
-            System.out.println("Géneros literarios disponibles:");
-            for (String genero : generos) {
-                System.out.println("- " + genero);
-            }
-        }
+        System.out.println("Géneros literarios disponibles:");
+        generos.forEach(genero -> System.out.println("- " + genero));
     }
-
     // Métodos para CRUD de miembros
     private static void crearMiembro(ModelFactory modelFactory) {
         String nombre = "Ana López";
         int cedula = 5678;
         boolean resultado = modelFactory.crearMiembro(nombre, cedula);
-        notificacion(resultado, "Miembro creado:  " +nombre + cedula +"  correctamente");
+        notificacion(resultado, "Miembro creado: Nombre: " +nombre +", Cedula: "+ cedula);
     }
     private static void verMiembro(ModelFactory modelFactory) {
         String cedula = "5678";
         String miembro = modelFactory.obtenerDatosMiembro(cedula);
         System.out.println("Detalle del miembro: " + miembro);
     }
+    private static void verMiembros(ModelFactory modelFactory) {
+        String resultado = modelFactory.verMiembros();
+        System.out.println("Lista de Miembros:\n" + resultado);
+    }
     private static void actualizarMiembro(ModelFactory modelFactory) {
         String nombre = "Ana María López";
         String cedulaActual = "5678";
         String cedulaNueva = "5679";
         boolean resultado = modelFactory.actualizarMiembro(nombre, cedulaActual, cedulaNueva);
-        notificacion(resultado, "Miembro actualizado: " + nombre + cedulaNueva );
+        notificacion(resultado, "Miembro actualizado: " + nombre +", Cedula Nueva: "+ cedulaNueva );
     }
     private static void eliminarMiembro(ModelFactory modelFactory) {
         int cedula = 5678;
         boolean resultado = modelFactory.eliminarMiembro(cedula);
         notificacion(resultado, "Miembro eliminado: " + cedula);
     }
-    private static void verMiembros(ModelFactory modelFactory) {
-        String resultado = modelFactory.verMiembros();
-        System.out.println("Lista de Miembros:\n" + resultado);
-    }
+
     private static void buscarLibroIsbn(ModelFactory modelFactory) {
         int isbn = 4589;
         String resultado = modelFactory.buscarLibroIsbn(isbn);

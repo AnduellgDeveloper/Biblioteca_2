@@ -219,16 +219,16 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return generos;
     }
+
     public List<String> obtenerGenerosLiterarios() {
-        List<String> generos = new ArrayList<>();
-        System.out.println("Cantidad de libros en lista: " + listaLibros.size());
-        for (Libro libro : listaLibros) {
-            if (!generos.contains(libro.getGenero())) {
-                generos.add(libro.getGenero());
-            }
+        List<String> generos = mostrarGenerosLiterarios();
+        if (generos.isEmpty()) {
+            generos.add("No hay géneros literarios disponibles.");
         }
         return generos;
     }
+
+
     private Libro obtenerLibro(int isbn) {
         for (Libro libro : listaLibros) {
             if (libro.getIsbn() == isbn) {

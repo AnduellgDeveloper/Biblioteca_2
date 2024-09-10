@@ -36,7 +36,6 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         Libro libro8 = new Libro("El Principito", "Antoine de Saint-Exupéry","Fabula", 99887);
         Libro libro9 = new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", "Misterio",66554);
         Libro libro10 = new Libro("Ficciones", "Jorge Luis Borges","Ficcion", 54321);
-
         listaLibros.add(libro1);
         listaLibros.add(libro2);
         listaLibros.add(libro3);
@@ -48,17 +47,16 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         listaLibros.add(libro9);
         listaLibros.add(libro10);
         System.out.println("Total libros agregados: " + listaLibros.size());
-
         biblioteca.setListaLibros(listaLibros);
         List<Miembro> listaMiembros = new ArrayList<>();
-        Miembro miembro1 = new Miembro("Duvan Felipe", 1);
-        Miembro miembro2 = new Miembro("Nicol Marin", 2);
-        Miembro miembro3 = new Miembro("Majo Tovar", 3);
-
+        Miembro miembro1 = new Miembro("Duvan Felipe", 1234);
+        Miembro miembro2 = new Miembro("Nicol Marin", 5689);
+        Miembro miembro3 = new Miembro("Majo Tovar", 8910);
         listaMiembros.add(miembro1);
         listaMiembros.add(miembro2);
         listaMiembros.add(miembro3);
         System.out.println("Total miembros agregados: " + listaMiembros.size());
+        biblioteca.setListaMiembros(listaMiembros);
     }
     @Override
     public boolean crearBibliotecario(String nombre, int idEmpleado) {
