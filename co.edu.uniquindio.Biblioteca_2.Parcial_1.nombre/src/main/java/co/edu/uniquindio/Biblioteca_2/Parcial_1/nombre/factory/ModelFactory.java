@@ -42,6 +42,7 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         listaMiembros.add(new Miembro("Duvan Felipe", 1234));
         listaMiembros.add(new Miembro("Nicol Marin", 5689));
         listaMiembros.add(new Miembro("Majo Tovar", 8910));
+        listaMiembros.add(new Miembro("carlos",2345671));
         System.out.println("Total miembros agregados: " + listaMiembros.size());
         biblioteca.setListaMiembros(listaMiembros);
         List<Prestamo> listaPrestamos = new ArrayList<>();
