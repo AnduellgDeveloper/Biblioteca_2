@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-
 public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
     private List<Prestamo> listaPrestamos = new ArrayList<>();
     private List<Libro> listaLibros = new ArrayList<>();
@@ -180,17 +178,14 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
-
     @Override
     public String buscarLibroIsbn(int isbn) {
         for (Libro libro : listaLibros) {
             if (libro.getIsbn() == isbn) {
-                return "El libro encontrado es : " + libro.toString();
-
+                return "El libro encontrado por isbn "+isbn+" es: " + libro;
             }
         }
-
-        return "";
+        return "No se encontró un libro con el ISBN: " + isbn;
     }
     @Override
     public List<String> mostrarGenerosLiterarios() {

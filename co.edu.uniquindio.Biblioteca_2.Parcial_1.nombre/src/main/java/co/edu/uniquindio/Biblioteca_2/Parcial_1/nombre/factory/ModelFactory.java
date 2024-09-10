@@ -105,8 +105,6 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     public List<String> mostrarGenerosLiterarios() {
         return biblioteca.obtenerGenerosLiterarios();
     }
-
-
     @Override
     public boolean crearLibro(String titulo, String autor, String genero, int isbn) {
         return biblioteca.crearLibro(titulo, autor, genero, isbn);
@@ -130,10 +128,7 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     @Override
     public String buscarLibroIsbn(int isbn) {
         return biblioteca.buscarLibroIsbn(isbn);
-
     }
-
-
     @Override
     public boolean crearMiembro(String nombre, int cedula) {
         return biblioteca.crearMiembro(nombre, cedula);
@@ -178,6 +173,4 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     public boolean eliminarPrestamo(int idPrestamo) {
         return biblioteca.eliminarPrestamo(idPrestamo);
     }
-
-
 }

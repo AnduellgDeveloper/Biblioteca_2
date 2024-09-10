@@ -46,6 +46,4 @@ public class Libro extends ItemBiblioteca {
                 '}';
 
     }
-
-    
 }

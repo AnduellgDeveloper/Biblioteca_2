@@ -24,6 +24,7 @@ public class Main {
         verLibro(modelFactory);
         actualizarLibro(modelFactory);
         eliminarLibro(modelFactory);
+        buscarLibroIsbn(modelFactory);
         mostrarGenerosLiterarios(modelFactory);
     }
     private static void gestionarMiembros(ModelFactory modelFactory) {
@@ -133,9 +134,10 @@ public class Main {
         String resultado = modelFactory.verMiembros();
         System.out.println("Lista de Miembros:\n" + resultado);
     }
-
     private static void buscarLibroIsbn(ModelFactory modelFactory) {
-        int isbn = 1234;
+        int isbn = 4589;
+        String resultado = modelFactory.buscarLibroIsbn(isbn);
+        System.out.println(resultado);
     }
     // Método para mostrar notificaciones
     private static void notificacion(boolean resultado, String mensaje) {
