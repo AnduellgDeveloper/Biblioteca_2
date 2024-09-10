@@ -36,7 +36,7 @@ public class Main {
         eliminarMiembro(modelFactory);
         verMiembros(modelFactory);
     }
-    // Métodos para CRUD de préstamos
+    //------------------------------ Métodos para CRUD de préstamos ------------------------------
     private static void crearPrestamo(ModelFactory modelFactory) {
         Libro libro = new Libro("Cien Años de Soledad", "Gabriel García Márquez","Realismo magico", 12345);
         Miembro miembro = new Miembro("Juan Pérez", 9876);
@@ -67,7 +67,7 @@ public class Main {
         boolean resultado = modelFactory.eliminarPrestamo(idPrestamo);
         notificacion(resultado, "Prestamo eliminado: " + eliminarLibro );
     }
-    // Métodos para CRUD de libros
+    //------------------------------ Métodos para CRUD de libros ------------------------------
     private static void crearLibro(ModelFactory modelFactory) {
         String titulo = " 1984";
         String autor =  " George Orwell";
@@ -96,12 +96,27 @@ public class Main {
         boolean resultado = modelFactory.eliminarLibro(isbn);
         notificacion(resultado, "Libro eliminado: " +isbn);
     }
+    private static void buscarLibroIsbn(ModelFactory modelFactory) {
+        int isbn = 4589;
+        String resultado = modelFactory.buscarLibroIsbn(isbn);
+        System.out.println(resultado);
+    }
+    private static void buscarLibroTitulo(ModelFactory modelFactory) {
+        String Titulo = "Boulevard";
+        String resultado = modelFactory.buscarLibroTitulo(Titulo);
+        System.out.println(resultado);
+    }
+    private static void buscarLibroAutor(ModelFactory modelFactory) {
+        String Autor = "Jane Austen";
+        String resultado = modelFactory.buscarLibroAutor(Autor);
+        System.out.println(resultado);
+    }
     private static void mostrarGenerosLiterarios(ModelFactory modelFactory) {
         List<String> generos = modelFactory.mostrarGenerosLiterarios();
         System.out.println("Géneros literarios disponibles:");
         generos.forEach(genero -> System.out.println("- " + genero));
     }
-    // Métodos para CRUD de miembros
+    //------------------------------ Métodos para CRUD de miembros ------------------------------
     private static void crearMiembro(ModelFactory modelFactory) {
         String nombre = "Ana López";
         int cedula = 5678;
@@ -130,22 +145,7 @@ public class Main {
         notificacion(resultado, "Miembro eliminado: " + cedula);
     }
 
-    private static void buscarLibroIsbn(ModelFactory modelFactory) {
-        int isbn = 4589;
-        String resultado = modelFactory.buscarLibroIsbn(isbn);
-        System.out.println(resultado);
-    }
-    private static void buscarLibroTitulo(ModelFactory modelFactory) {
-        String Titulo = "Boulevard";
-        String resultado = modelFactory.buscarLibroTitulo(Titulo);
-        System.out.println(resultado);
-    }
-    private static void buscarLibroAutor(ModelFactory modelFactory) {
-        String Autor = "Jane Austen";
-        String resultado = modelFactory.buscarLibroAutor(Autor);
-        System.out.println(resultado);
-    }
-    // Método para mostrar notificaciones
+    //------------------------------ Método para mostrar notificaciones ------------------------------
     private static void notificacion(boolean resultado, String mensaje) {
         if (resultado) {
             System.out.println(mensaje );
