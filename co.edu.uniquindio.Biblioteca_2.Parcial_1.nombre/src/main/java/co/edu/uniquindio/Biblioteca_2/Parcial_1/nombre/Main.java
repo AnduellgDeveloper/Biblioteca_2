@@ -18,6 +18,7 @@ public class Main {
         verPrestamo(modelFactory);
         actualizarPrestamo(modelFactory);
         eliminarPrestamo(modelFactory);
+        mostrarPrestamosActivos(modelFactory);
     }
     private static void gestionarLibros(ModelFactory modelFactory) {
         crearLibro(modelFactory);
@@ -67,6 +68,11 @@ public class Main {
         boolean resultado = modelFactory.eliminarPrestamo(idPrestamo);
         notificacion(resultado, "Prestamo eliminado: " + eliminarLibro );
     }
+    private static void mostrarPrestamosActivos(ModelFactory modelFactory) {
+        List<Prestamo> listaPrestamos = modelFactory.obtenerListaPrestamosActivos();
+        modelFactory.mostrarPrestamosActivos(listaPrestamos);
+    }
+
     //------------------------------ Métodos para CRUD de libros ------------------------------
     private static void crearLibro(ModelFactory modelFactory) {
         String titulo = " 1984";

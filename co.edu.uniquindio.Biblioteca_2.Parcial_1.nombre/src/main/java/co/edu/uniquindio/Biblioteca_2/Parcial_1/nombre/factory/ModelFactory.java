@@ -1,11 +1,9 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.factory;
-
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Biblioteca;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Libro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Miembro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Prestamo;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services.*;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +11,7 @@ import java.util.List;
 public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
     private static ModelFactory modelFactory;
     private static Biblioteca biblioteca;
+
     private ModelFactory() {
         inicializarDatos();
     }
@@ -23,32 +22,36 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         }
         return modelFactory;
     }
+
     public static void inicializarDatos() {
         biblioteca = new Biblioteca();
         List<Libro> listaLibros = new ArrayList<>();
-        Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri","Poesía épica", 4589);
-        Libro libro2 = new Libro("Boulevard", "Flor M. Salvador", "Romance juvenil", 89021);
-        Libro libro3 = new Libro("Cien Años de Soledad", "Gabriel García Márquez", "Realismo magico", 12345);
-        Libro libro4 = new Libro("El Amor en los Tiempos del Cólera", "Gabriel García Márquez", "Romance", 67890);
-        Libro libro5 = new Libro("1984", "George Orwell","Distopia", 11223);
-        Libro libro6 = new Libro("Orgullo y Prejuicio", "Jane Austen","Romance clasico", 44556);
-        Libro libro7 = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", "Novela",77889);
-        Libro libro8 = new Libro("El Principito", "Antoine de Saint-Exupéry","Fabula", 99887);
-        Libro libro9 = new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", "Misterio",66554);
-        Libro libro10 = new Libro("Ficciones", "Jorge Luis Borges","Ficcion", 54321);
-        listaLibros.add(libro1);listaLibros.add(libro2);listaLibros.add(libro3);listaLibros.add(libro4);listaLibros.add(libro5);
-        listaLibros.add(libro6);listaLibros.add(libro7);listaLibros.add(libro8);listaLibros.add(libro9);listaLibros.add(libro10);
+        listaLibros.add(new Libro("La Divina Comedia", "Dante Alighieri", "Poesía épica", 4589));
+        listaLibros.add(new Libro("Boulevard", "Flor M. Salvador", "Romance juvenil", 89021));
+        listaLibros.add(new Libro("Cien Años de Soledad", "Gabriel García Márquez", "Realismo mágico", 12345));
+        listaLibros.add(new Libro("El Amor en los Tiempos del Cólera", "Gabriel García Márquez", "Romance", 67890));
+        listaLibros.add(new Libro("1984", "George Orwell", "Distopía", 11223));
+        listaLibros.add(new Libro("Orgullo y Prejuicio", "Jane Austen", "Romance clásico", 44556));
+        listaLibros.add(new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", "Novela", 77889));
+        listaLibros.add(new Libro("El Principito", "Antoine de Saint-Exupéry", "Fábula", 99887));
+        listaLibros.add(new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", "Misterio", 66554));
+        listaLibros.add(new Libro("Ficciones", "Jorge Luis Borges", "Ficción", 54321));
         System.out.println("Total libros agregados: " + listaLibros.size());
         biblioteca.setListaLibros(listaLibros);
-
         List<Miembro> listaMiembros = new ArrayList<>();
-        Miembro miembro1 = new Miembro("Duvan Felipe", 1234);
-        Miembro miembro2 = new Miembro("Nicol Marin", 5689);
-        Miembro miembro3 = new Miembro("Majo Tovar", 8910);
-        listaMiembros.add(miembro1);listaMiembros.add(miembro2);listaMiembros.add(miembro3);
+        listaMiembros.add(new Miembro("Duvan Felipe", 1234));
+        listaMiembros.add(new Miembro("Nicol Marin", 5689));
+        listaMiembros.add(new Miembro("Majo Tovar", 8910));
         System.out.println("Total miembros agregados: " + listaMiembros.size());
         biblioteca.setListaMiembros(listaMiembros);
+        List<Prestamo> listaPrestamos = new ArrayList<>();
+        listaPrestamos.add(new Prestamo(listaLibros.get(0), listaMiembros.get(0), "Activo", LocalDateTime.now(), null));
+        listaPrestamos.add(new Prestamo(listaLibros.get(1), listaMiembros.get(1), "Activo", LocalDateTime.now(), null));
+        listaPrestamos.add(new Prestamo(listaLibros.get(2), listaMiembros.get(2), "Activo", LocalDateTime.now(), null));
+        System.out.println("Total préstamos agregados: " + listaPrestamos.size());
+        biblioteca.setListaPrestamos(listaPrestamos);
     }
+
     @Override
     public boolean crearBibliotecario(String nombre, int idEmpleado) {
         return biblioteca.crearBibliotecario(nombre, idEmpleado);
@@ -71,7 +74,6 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
 
     @Override
     public void gestionarItem() {
-
     }
 
     @Override
@@ -98,6 +100,7 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     public List<String> mostrarGenerosLiterarios() {
         return biblioteca.obtenerGenerosLiterarios();
     }
+
     @Override
     public boolean crearLibro(String titulo, String autor, String genero, int isbn) {
         return biblioteca.crearLibro(titulo, autor, genero, isbn);
@@ -160,6 +163,8 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         return biblioteca.verMiembros();
     }
 
+    //------------------------------ Métodos para CRUD de préstamos ModelFactory ------------------------------
+
     @Override
     public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         return biblioteca.crearPrestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
@@ -179,4 +184,14 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     public boolean eliminarPrestamo(int idPrestamo) {
         return biblioteca.eliminarPrestamo(idPrestamo);
     }
+
+    @Override
+    public void mostrarPrestamos(List<Prestamo> listaPrestamos) {
+        biblioteca.mostrarPrestamos(listaPrestamos);
+    }
+    @Override
+    public List<Prestamo> obtenerListaPrestamosActivos() {
+        return biblioteca.obtenerListaPrestamosActivos();
+    }
+
 }

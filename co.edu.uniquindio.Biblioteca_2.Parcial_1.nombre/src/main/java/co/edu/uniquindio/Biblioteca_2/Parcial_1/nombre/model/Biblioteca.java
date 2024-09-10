@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+
 public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
     private List<Prestamo> listaPrestamos = new ArrayList<>();
     private List<Libro> listaLibros = new ArrayList<>();
@@ -37,7 +40,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         listaItems.add(listaRevistas);
         listaItems.add(listaDvds);
     }
-    //-------------- Métodos de IGestionInventario --------------
+    //------------------------------ Métodos de IGestionInventario ------------------------------
     @Override
     public void gestionarItem() {
     }
@@ -54,9 +57,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     @Override
     public void mostrarLibroPorTitulo() {
     }
-
-
-    //-------------- Métodos de IMiembroCrud --------------
+    //------------------------------ Métodos de IMiembroCrud ------------------------------
     @Override
     public boolean crearMiembro(String nombre, int cedula) {
         if (obtenerMiembro(String.valueOf(cedula)) == null) {
@@ -115,7 +116,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
-    //-------------- Métodos de IBibliotecarioCrud--------------
+    //------------------------------ Métodos de IBibliotecarioCrud ------------------------------
     @Override
     public boolean crearBibliotecario(String nombre, int idEmpleado) {
         if (obtenerBibliotecario(idEmpleado) == null) {
@@ -161,7 +162,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
-    //-------------- Métodos de ILibroCrud --------------
+    //------------------------------ Métodos de ILibroCrud ------------------------------
     @Override
     public boolean crearLibro(String titulo, String autor, String genero,int isbn) {
         if (obtenerLibro(isbn) == null) {
@@ -254,7 +255,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
-    //-------------- Métodos de IPrestamoCrud --------------
+    //------------------------------ Métodos de IPrestamoCrud ------------------------------
     @Override
     public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         Prestamo nuevoPrestamo = new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
@@ -283,6 +284,17 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return false;
     }
+
+    @Override
+    public void mostrarPrestamos(List<Prestamo> listaPrestamos) {
+        if (listaPrestamos.isEmpty()) {
+            System.out.println("No hay préstamos registrados.");
+        } else {
+            for (Prestamo prestamo : listaPrestamos) {
+                System.out.println(prestamo.toString());
+            }
+        }
+    }
     private Prestamo obtenerPrestamo(int idPrestamo) {
         for (Prestamo prestamo : listaPrestamos) {
             if (prestamo.getIdPrestamo() == idPrestamo) {
@@ -291,4 +303,15 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
+    @Override
+    public List<Prestamo> obtenerListaPrestamosActivos() {
+        List<Prestamo> prestamosActivos = new ArrayList<>();
+        for (Prestamo prestamo : listaPrestamos) {
+            if ("activo".equals(prestamo.getEstado())) {
+                prestamosActivos.add(prestamo);
+            }
+        }
+        return prestamosActivos;
+    }
+
 }

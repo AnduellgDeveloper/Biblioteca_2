@@ -1,4 +1,6 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services;
+import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Prestamo;
+
 import java.util.List;
 public interface ILibroCrud {
     boolean crearLibro(String titulo, String autor, String genero, int isbn);
@@ -9,4 +11,5 @@ public interface ILibroCrud {
     String buscarLibroTitulo(String Titulo);
     String buscarLibroAutor(String Autor);
     List<String> mostrarGenerosLiterarios();
+
 }
