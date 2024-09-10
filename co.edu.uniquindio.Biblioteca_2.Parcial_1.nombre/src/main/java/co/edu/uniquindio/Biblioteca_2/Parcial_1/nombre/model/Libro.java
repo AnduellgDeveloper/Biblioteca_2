@@ -36,14 +36,16 @@ public class Libro extends ItemBiblioteca {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
     @Override
     public String toString() {
-        return "Libro{" +
-                "Título='" + titulo + '\'' +
-                ", Autor='" + autor + '\'' +
-                ", genero='" + genero + '\'' +
-                ", ISBN=" + isbn +
-                '}';
-
+        return String.format(
+                "Título: %s%n" +
+                        "Autor: %s%n" +
+                        "Género: %s%n" +
+                        "ISBN: %d%n",
+                titulo, autor, genero, isbn
+        );
     }
+
 }

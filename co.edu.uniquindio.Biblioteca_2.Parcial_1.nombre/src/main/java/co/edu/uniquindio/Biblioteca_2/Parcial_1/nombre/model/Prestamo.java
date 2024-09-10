@@ -70,13 +70,20 @@ public class Prestamo {
 
     @Override
     public String toString() {
-        return "Prestamo{" +
-                "idPrestamo=" + idPrestamo +
-                ", libro=" + libro.getTitulo() +
-                ", miembro=" + miembro.getNombre() +
-                ", estado='" + estado + '\'' +
-                ", fechaPrestamo=" + fechaPrestamo.format(FORMATTER) +
-                ", fechaDevolucion=" + (fechaDevolucion != null ? fechaDevolucion.format(FORMATTER) : "No devuelto") +
-                '}';
+        return String.format(
+                "ID de Préstamo: %d%n" +
+                        "Libro: %s%n" +
+                        "Miembro: %s%n" +
+                        "Estado: %s%n" +
+                        "Fecha de Préstamo: %s%n" +
+                        "Fecha de Devolución: %s%n",
+                idPrestamo,
+                libro.getTitulo(),
+                miembro.getNombre(),
+                estado,
+                fechaPrestamo.format(FORMATTER),
+                (fechaDevolucion != null ? fechaDevolucion.format(FORMATTER) : "No devuelto")
+        );
     }
+
 }

@@ -18,6 +18,30 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         return listaLibros;
     }
 
+    public List<Prestamo> getListaPrestamos() {
+        return listaPrestamos;
+    }
+
+    public void setListaPrestamos(List<Prestamo> listaPrestamos) {
+        this.listaPrestamos = listaPrestamos;
+    }
+
+    public List<Miembro> getListaMiembros() {
+        return listaMiembros;
+    }
+
+    public void setListaMiembros(List<Miembro> listaMiembros) {
+        this.listaMiembros = listaMiembros;
+    }
+
+    public List<Bibliotecario> getListaBibliotecarios() {
+        return listaBibliotecarios;
+    }
+
+    public void setListaBibliotecarios(List<Bibliotecario> listaBibliotecarios) {
+        this.listaBibliotecarios = listaBibliotecarios;
+    }
+
     //-------------- Métodos de IGestionInventario --------------
     @Override
     public void agregarItem() {
@@ -74,11 +98,9 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     @Override
     public String verMiembros() {
         StringBuilder miembrosInfo = new StringBuilder();
-
         if (listaMiembros.isEmpty()) {
             return "No hay miembros.";
         }
-
         for (Miembro miembro : listaMiembros) {
             miembrosInfo.append("Nombre: ").append(miembro.getNombre())
                     .append(", Cédula: ").append(miembro.getCedula()).append("\n");

@@ -19,9 +19,12 @@ public class Miembro  {
     }
     @Override
     public String toString() {
-        return "Miembro{" +
-                "Nombre='" + nombre + '\'' +
-                ", Cédula=" + cedula +
-                '}';
+        return String.format(
+                "Nombre: %s%n" +
+                        "Cédula: %d%n",
+                nombre,
+                cedula
+        );
     }
+
 }

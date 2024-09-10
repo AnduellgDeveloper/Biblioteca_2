@@ -41,7 +41,7 @@ public class Main {
         LocalDateTime fechaPrestamo = LocalDateTime.now();
         LocalDateTime fechaDevolucion = null;
         boolean resultado = modelFactory.crearPrestamo(libro, miembro, "Activo", fechaPrestamo, fechaDevolucion);
-        notificacion(resultado, "Prestamo creado");
+        notificacion(resultado, "\nPrestamo creado: ");
     }
     private static void verPrestamo(ModelFactory modelFactory) {
         int idPrestamo = 1;
@@ -56,23 +56,23 @@ public class Main {
         int idPrestamo = 1;
         Libro nuevoLibro = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes","Novela", 6789);
         boolean resultado = modelFactory.actualizarPrestamo(idPrestamo, nuevoLibro);
-        notificacion(resultado, "Prestamo actualizado"+ nuevoLibro);
+        notificacion(resultado, "Prestamo actualizado: "+ nuevoLibro);
     }
 
     private static void eliminarPrestamo(ModelFactory modelFactory) {
         int idPrestamo = 1;
         Libro eliminarLibro = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes","Novela", 6789);
         boolean resultado = modelFactory.eliminarPrestamo(idPrestamo);
-        notificacion(resultado, "Prestamo eliminado" + eliminarLibro );
+        notificacion(resultado, "Prestamo eliminado: " + eliminarLibro );
     }
     // Métodos para CRUD de libros
     private static void crearLibro(ModelFactory modelFactory) {
-        String titulo = "1984";
-        String autor = "George Orwell";
-        String genero= "Distopia";
+        String titulo = " 1984";
+        String autor =  " George Orwell";
+        String genero= " Distopia";
         int isbn = 11223;
         boolean resultado = modelFactory.crearLibro(titulo, autor,genero, isbn);
-        notificacion(resultado, "Libro creado " + titulo + "de" + autor + "del genero"+ genero);
+        notificacion(resultado, "Libro creado: " + titulo + " de " + autor + " del genero "+ genero);
     }
     private static void verLibro(ModelFactory modelFactory) {
         String titulo = "1984";
@@ -123,12 +123,12 @@ public class Main {
         String cedulaActual = "5678";
         String cedulaNueva = "5679";
         boolean resultado = modelFactory.actualizarMiembro(nombre, cedulaActual, cedulaNueva);
-        notificacion(resultado, "Miembro actualizado " + nombre + cedulaNueva );
+        notificacion(resultado, "Miembro actualizado: " + nombre + cedulaNueva );
     }
     private static void eliminarMiembro(ModelFactory modelFactory) {
         int cedula = 5678;
         boolean resultado = modelFactory.eliminarMiembro(cedula);
-        notificacion(resultado, "Miembro eliminado" + cedula);
+        notificacion(resultado, "Miembro eliminado: " + cedula);
     }
     private static void verMiembros(ModelFactory modelFactory) {
         String resultado = modelFactory.verMiembros();

@@ -13,8 +13,6 @@ import java.util.List;
 public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
     private static ModelFactory modelFactory;
     private static Biblioteca biblioteca;
-    private static List<Miembro> listaMiembros = new ArrayList<>();
-
     private ModelFactory() {
         inicializarDatos();
     }
@@ -52,7 +50,7 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         System.out.println("Total libros agregados: " + listaLibros.size());
 
         biblioteca.setListaLibros(listaLibros);
-
+        List<Miembro> listaMiembros = new ArrayList<>();
         Miembro miembro1 = new Miembro("Duvan Felipe", 1);
         Miembro miembro2 = new Miembro("Nicol Marin", 2);
         Miembro miembro3 = new Miembro("Majo Tovar", 3);
@@ -60,6 +58,7 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         listaMiembros.add(miembro1);
         listaMiembros.add(miembro2);
         listaMiembros.add(miembro3);
+        System.out.println("Total miembros agregados: " + listaMiembros.size());
     }
     @Override
     public boolean crearBibliotecario(String nombre, int idEmpleado) {
