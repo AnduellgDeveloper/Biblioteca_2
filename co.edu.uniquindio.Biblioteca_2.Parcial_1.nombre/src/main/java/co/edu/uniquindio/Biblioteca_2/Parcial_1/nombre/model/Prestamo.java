@@ -1,11 +1,10 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Prestamo {
     public static Prestamo builder;
-    private static int idCounter = 1; // Contador para generar IDs únicos.
+    private static int idCounter = 1;
     private int idPrestamo;
     private Libro libro;
     private Miembro miembro;

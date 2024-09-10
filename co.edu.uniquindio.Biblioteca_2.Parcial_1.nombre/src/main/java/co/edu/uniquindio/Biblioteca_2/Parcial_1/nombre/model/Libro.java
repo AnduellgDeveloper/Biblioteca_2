@@ -12,7 +12,6 @@ public class Libro extends ItemBiblioteca {
         this.isbn = isbn;
         this.estado = "disponible";
     }
-
     public String getAutor() {
         return autor;
     }
@@ -22,7 +21,6 @@ public class Libro extends ItemBiblioteca {
     public String getGenero() {
         return genero;
     }
-
     public void setGenero(String genero) {
         this.genero = genero;
     }

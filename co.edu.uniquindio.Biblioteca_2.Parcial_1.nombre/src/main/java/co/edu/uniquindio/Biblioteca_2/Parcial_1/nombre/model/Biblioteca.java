@@ -12,6 +12,14 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     private List<Miembro> listaMiembros = new ArrayList<>();
     private List<Bibliotecario> listaBibliotecarios = new ArrayList<>();
 
+    public void setListaLibros(List<Libro> listaLibros) {
+        this.listaLibros = listaLibros;
+    }
+
+    public List<Libro> getListaLibros() {
+        return listaLibros;
+    }
+
     //-------------- Métodos de IGestionInventario --------------
     @Override
     public void agregarItem() {
@@ -26,6 +34,8 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     @Override
     public void mostrarLibroPorTitulo() {
     }
+
+
     //-------------- Métodos de IMiembroCrud --------------
     @Override
     public boolean crearMiembro(String nombre, int cedula) {
@@ -182,6 +192,26 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
 
         return "";
     }
+    @Override
+    public List<String> mostrarGenerosLiterarios() {
+        List<String> generos = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (!generos.contains(libro.getGenero())) {
+                generos.add(libro.getGenero());
+            }
+        }
+        return generos;
+    }
+    public List<String> obtenerGenerosLiterarios() {
+        List<String> generos = new ArrayList<>();
+        System.out.println("Cantidad de libros en lista: " + listaLibros.size());
+        for (Libro libro : listaLibros) {
+            if (!generos.contains(libro.getGenero())) {
+                generos.add(libro.getGenero());
+            }
+        }
+        return generos;
+    }
     private Libro obtenerLibro(int isbn) {
         for (Libro libro : listaLibros) {
             if (libro.getIsbn() == isbn) {
@@ -190,16 +220,7 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         }
         return null;
     }
-    
-    //public List<String> obtenerGenerosLiterarios() {
-        //List<String> generos = new ArrayList<>();
-        //for (Libro libro : listaLibros) {
-           // if (!generos.contains(libro.getGenero())) {
-             //   generos.add(libro.getGenero());
-           // }
-        //}
-       // return generos;
-    ///
+
     @Override
     public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         Prestamo nuevoPrestamo = new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);

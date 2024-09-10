@@ -5,14 +5,13 @@ import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Miembro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Prestamo;
 import java.time.LocalDateTime;
 import java.util.List;
-// Falta organizar la secuencia y los gets para imprimmir
 public class Main {
     public static void main(String[] args) {
         ModelFactory modelFactory = ModelFactory.getInstance();
+        modelFactory.inicializarDatos();
         gestionarPrestamos(modelFactory);
         gestionarLibros(modelFactory);
         gestionarMiembros(modelFactory);
-        
     }
     private static void gestionarPrestamos(ModelFactory modelFactory) {
         crearPrestamo(modelFactory);
@@ -25,8 +24,7 @@ public class Main {
         verLibro(modelFactory);
         actualizarLibro(modelFactory);
         eliminarLibro(modelFactory);
-        //mostrarGenerosLiterarios(modelFactory);
-
+        mostrarGenerosLiterarios(modelFactory);
     }
     private static void gestionarMiembros(ModelFactory modelFactory) {
         crearMiembro(modelFactory);
@@ -91,16 +89,22 @@ public class Main {
         notificacion(resultado, "Libro actualizado: "+  nuevoTitulo + "de" +nuevoAutor);
     }
     private static void eliminarLibro(ModelFactory modelFactory) {
-        int isbn = 11223; // ISBN del libro a eliminar
+        int isbn = 11223;
         boolean resultado = modelFactory.eliminarLibro(isbn);
         notificacion(resultado, "Libro eliminado: " +isbn);
     }
-    //private static void mostrarGenerosLiterarios(ModelFactory modelFactory) {
-        //List<String> generos = modelFactory.obtenerGenerosLiterarios();
-        //System.out.println("Géneros literarios disponibles:");
-        //generos.forEach(System.out::println);//
-    
-    
+    private static void mostrarGenerosLiterarios(ModelFactory modelFactory) {
+        List<String> generos = modelFactory.mostrarGenerosLiterarios();
+        if (generos.isEmpty()) {
+            System.out.println("No hay géneros literarios disponibles.");
+        } else {
+            System.out.println("Géneros literarios disponibles:");
+            for (String genero : generos) {
+                System.out.println("- " + genero);
+            }
+        }
+    }
+
     // Métodos para CRUD de miembros
     private static void crearMiembro(ModelFactory modelFactory) {
         String nombre = "Ana López";

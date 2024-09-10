@@ -13,7 +13,6 @@ import java.util.List;
 public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
     private static ModelFactory modelFactory;
     private static Biblioteca biblioteca;
-    private static List<Libro> listaLibros = new ArrayList<>();
     private static List<Miembro> listaMiembros = new ArrayList<>();
 
     private ModelFactory() {
@@ -26,11 +25,10 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         }
         return modelFactory;
     }
-
-
     public static void inicializarDatos() {
         biblioteca = new Biblioteca();
-        Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri","Poesia epica",  4589);
+        List<Libro> listaLibros = new ArrayList<>();
+        Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri","Poesía épica", 4589);
         Libro libro2 = new Libro("Boulevard", "Flor M. Salvador", "Romance juvenil", 89021);
         Libro libro3 = new Libro("Cien Años de Soledad", "Gabriel García Márquez", "Realismo magico", 12345);
         Libro libro4 = new Libro("El Amor en los Tiempos del Cólera", "Gabriel García Márquez", "Romance", 67890);
@@ -40,6 +38,7 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         Libro libro8 = new Libro("El Principito", "Antoine de Saint-Exupéry","Fabula", 99887);
         Libro libro9 = new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", "Misterio",66554);
         Libro libro10 = new Libro("Ficciones", "Jorge Luis Borges","Ficcion", 54321);
+
         listaLibros.add(libro1);
         listaLibros.add(libro2);
         listaLibros.add(libro3);
@@ -50,6 +49,9 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         listaLibros.add(libro8);
         listaLibros.add(libro9);
         listaLibros.add(libro10);
+        System.out.println("Total libros agregados: " + listaLibros.size());
+
+        biblioteca.setListaLibros(listaLibros);
 
         Miembro miembro1 = new Miembro("Duvan Felipe", 1);
         Miembro miembro2 = new Miembro("Nicol Marin", 2);
@@ -59,7 +61,6 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
         listaMiembros.add(miembro2);
         listaMiembros.add(miembro3);
     }
-
     @Override
     public boolean crearBibliotecario(String nombre, int idEmpleado) {
         return biblioteca.crearBibliotecario(nombre, idEmpleado);
@@ -101,8 +102,14 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     }
 
     @Override
+    public List<String> mostrarGenerosLiterarios() {
+        return biblioteca.obtenerGenerosLiterarios();
+    }
+
+
+    @Override
     public boolean crearLibro(String titulo, String autor, String genero, int isbn) {
-        return biblioteca.crearLibro(titulo, autor, genero,isbn);
+        return biblioteca.crearLibro(titulo, autor, genero, isbn);
     }
 
     @Override
@@ -121,11 +128,12 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     }
 
     @Override
-    public String buscarLibroIsbn(int isbn) {return biblioteca.buscarLibroIsbn(isbn);
+    public String buscarLibroIsbn(int isbn) {
+        return biblioteca.buscarLibroIsbn(isbn);
 
     }
-    
-    
+
+
     @Override
     public boolean crearMiembro(String nombre, int cedula) {
         return biblioteca.crearMiembro(nombre, cedula);
@@ -145,10 +153,12 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     public String obtenerDatosMiembro(String cedula) {
         return biblioteca.obtenerDatosMiembro(cedula);
     }
+
     @Override
     public String verMiembros() {
         return biblioteca.verMiembros();
     }
+
     @Override
     public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         return biblioteca.crearPrestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
@@ -168,4 +178,6 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     public boolean eliminarPrestamo(int idPrestamo) {
         return biblioteca.eliminarPrestamo(idPrestamo);
     }
+
+
 }

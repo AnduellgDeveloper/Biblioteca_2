@@ -1,6 +1,5 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.builder.MiembroBuilder;
-
 public class Miembro  {
     private String nombre;
     private int cedula;
@@ -15,11 +14,9 @@ public class Miembro  {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public void setCedula(int cedula) {
         this.cedula = cedula;
     }
-
     @Override
     public String toString() {
         return "Miembro{" +
