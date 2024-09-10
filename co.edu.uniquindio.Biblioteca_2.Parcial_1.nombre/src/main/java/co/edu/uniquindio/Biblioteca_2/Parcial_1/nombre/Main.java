@@ -25,6 +25,8 @@ public class Main {
         actualizarLibro(modelFactory);
         eliminarLibro(modelFactory);
         buscarLibroIsbn(modelFactory);
+        buscarLibroTitulo(modelFactory);
+        buscarLibroAutor(modelFactory);
         mostrarGenerosLiterarios(modelFactory);
     }
     private static void gestionarMiembros(ModelFactory modelFactory) {
@@ -131,6 +133,16 @@ public class Main {
     private static void buscarLibroIsbn(ModelFactory modelFactory) {
         int isbn = 4589;
         String resultado = modelFactory.buscarLibroIsbn(isbn);
+        System.out.println(resultado);
+    }
+    private static void buscarLibroTitulo(ModelFactory modelFactory) {
+        String Titulo = "Boulevard";
+        String resultado = modelFactory.buscarLibroTitulo(Titulo);
+        System.out.println(resultado);
+    }
+    private static void buscarLibroAutor(ModelFactory modelFactory) {
+        String Autor = "Jane Austen";
+        String resultado = modelFactory.buscarLibroAutor(Autor);
         System.out.println(resultado);
     }
     // Método para mostrar notificaciones

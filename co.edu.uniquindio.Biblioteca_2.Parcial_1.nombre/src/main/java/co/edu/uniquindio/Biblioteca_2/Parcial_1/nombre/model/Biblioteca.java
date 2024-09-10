@@ -210,6 +210,25 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         return "No se encontró un libro con el ISBN: " + isbn;
     }
     @Override
+    public String buscarLibroTitulo(String Titulo ) {
+        for (Libro libro : listaLibros) {
+            if (libro.getTitulo().equals(Titulo)) {
+                return "El libro encontrado por Titulo "+Titulo +" es: " + libro;
+            }
+        }
+        return "No se encontró un libro con el Titulo : " + Titulo;
+    }
+
+    @Override
+    public String buscarLibroAutor(String Autor ) {
+        for (Libro libro : listaLibros) {
+            if (libro.getAutor().equals(Autor)) {
+                return "El libro encontrado por Autor "+ Autor +" es: " + libro;
+            }
+        }
+        return "No se encontró un libro con el Autor : " + Autor;
+    }
+    @Override
     public List<String> mostrarGenerosLiterarios() {
         List<String> generos = new ArrayList<>();
         for (Libro libro : listaLibros) {

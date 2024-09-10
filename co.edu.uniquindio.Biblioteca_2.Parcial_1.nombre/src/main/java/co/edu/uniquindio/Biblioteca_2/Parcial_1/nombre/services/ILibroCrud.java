@@ -6,5 +6,7 @@ public interface ILibroCrud {
     boolean actualizarLibro(int isbn, String nuevoTitulo, String nuevoAutor);
     boolean eliminarLibro(int isbn);
     String buscarLibroIsbn(int isbn);
+    String buscarLibroTitulo(String Titulo);
+    String buscarLibroAutor(String Autor);
     List<String> mostrarGenerosLiterarios();
 }
