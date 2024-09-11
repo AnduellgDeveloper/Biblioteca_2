@@ -11,6 +11,7 @@ public class Miembro  {
     public int getCedula() {return cedula;}
     public String getNombre() {return nombre;}
 
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

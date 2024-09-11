@@ -1,4 +1,7 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model;
+
+import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.builder.LibroBuilder;
+
 public class Libro  {
     private String titulo;
     private String autor;
@@ -12,6 +15,10 @@ public class Libro  {
         this.genero= genero;
         this.isbn = isbn;
         this.estado = "disponible";
+    }
+    public static LibroBuilder builder(){
+        return new LibroBuilder();
+
     }
     public String getAutor() {
         return autor;

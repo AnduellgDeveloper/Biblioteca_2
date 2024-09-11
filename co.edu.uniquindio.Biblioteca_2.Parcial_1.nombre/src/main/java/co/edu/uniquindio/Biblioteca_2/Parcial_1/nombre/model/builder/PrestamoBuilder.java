@@ -7,6 +7,7 @@ import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Prestamo;
 import java.time.LocalDateTime;
 
 public class PrestamoBuilder {
+    protected int idPrestamo;
     protected Libro libro;
     protected Miembro miembro;
     protected String estado;
@@ -14,7 +15,7 @@ public class PrestamoBuilder {
     protected LocalDateTime fechaDevolucion;
 
     public Prestamo build(){
-        return new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
+        return new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion,idPrestamo);
     }
     public PrestamoBuilder libro(Libro libro) {
         this.libro = libro;
@@ -30,6 +31,10 @@ public class PrestamoBuilder {
     }
     public PrestamoBuilder fechaPrestamo (LocalDateTime fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
+        return this;
+    }
+    public PrestamoBuilder idPrestamo(int idPrestamo){
+        this.idPrestamo=idPrestamo;
         return this;
     }
     public PrestamoBuilder fechaDevolucion (LocalDateTime fechaDevolucion) {

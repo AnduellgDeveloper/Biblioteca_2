@@ -257,11 +257,14 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     }
     //------------------------------ Métodos de IPrestamoCrud ------------------------------
     @Override
-    public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
-        Prestamo nuevoPrestamo = new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
+    public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion,int idPrestamo) {
+        Prestamo nuevoPrestamo = new Prestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion,idPrestamo);
         listaPrestamos.add(nuevoPrestamo);
         return true;
     }
+
+
+
     @Override
     public Prestamo verPrestamo(int idPrestamo) {
         return obtenerPrestamo(idPrestamo);

@@ -1,10 +1,12 @@
 package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model;
+import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.builder.PrestamoBuilder;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Prestamo {
-    public static Prestamo builder;
-    private static int idCounter = 1;
+
+    //private static int idCounter = 1;
     private int idPrestamo;
     private Libro libro;
     private Miembro miembro;
@@ -13,8 +15,9 @@ public class Prestamo {
     private LocalDateTime fechaDevolucion;
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-    public Prestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
-        this.idPrestamo = idCounter++; // Asigna un ID único y lo incrementa.
+
+    public Prestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion,int idPrestamo) {
+        this.idPrestamo = idPrestamo; // Asigna un ID único y lo incrementa.
         this.libro = libro;
         this.miembro = miembro;
         this.estado = estado;
@@ -23,7 +26,11 @@ public class Prestamo {
         this.libro.setEstado("prestado");
     }
 
+
     // Getters y setters
+    public static PrestamoBuilder  builder (){
+        return new PrestamoBuilder();
+    }
     public int getIdPrestamo() {
         return idPrestamo;
     }

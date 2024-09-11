@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IPrestamoCrud {
-    boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion);
+    boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion,int idPrestamo);
     Prestamo verPrestamo(int idPrestamo);
     boolean actualizarPrestamo(int idPrestamo, Libro nuevoLibro);
     boolean eliminarPrestamo(int idPrestamo);

@@ -18,7 +18,7 @@ public class Main {
         verPrestamo(modelFactory);
         actualizarPrestamo(modelFactory);
         eliminarPrestamo(modelFactory);
-        mostrarPrestamosActivos(modelFactory);
+        //mostrarPrestamosActivos(modelFactory);
     }
     private static void gestionarLibros(ModelFactory modelFactory) {
         crearLibro(modelFactory);
@@ -43,11 +43,12 @@ public class Main {
         Miembro miembro = new Miembro("Juan Pérez", 9876);
         LocalDateTime fechaPrestamo = LocalDateTime.now();
         LocalDateTime fechaDevolucion = null;
-        boolean resultado = modelFactory.crearPrestamo(libro, miembro, "Activo", fechaPrestamo, fechaDevolucion);
+        int idPrestamo=2;
+        boolean resultado = modelFactory.crearPrestamo(libro, miembro, "Activo", fechaPrestamo, fechaDevolucion,idPrestamo);
         notificacion(resultado, "\nPrestamo creado: ");
     }
     private static void verPrestamo(ModelFactory modelFactory) {
-        int idPrestamo = 1;
+        int idPrestamo =2 ;
         Prestamo prestamo = modelFactory.verPrestamo(idPrestamo);
         if (prestamo != null) {
             System.out.println("Detalle del préstamo: " + prestamo);
@@ -68,10 +69,10 @@ public class Main {
         boolean resultado = modelFactory.eliminarPrestamo(idPrestamo);
         notificacion(resultado, "Prestamo eliminado: " + eliminarLibro );
     }
-    private static void mostrarPrestamosActivos(ModelFactory modelFactory) {
-        List<Prestamo> listaPrestamos = modelFactory.obtenerListaPrestamosActivos();
-        modelFactory.mostrarPrestamosActivos(listaPrestamos);
-    }
+    //private static void mostrarPrestamosActivos(ModelFactory modelFactory) {
+       // List<Prestamo> listaPrestamos = modelFactory.obtenerListaPrestamosActivos();
+        //modelFactory.mostrarPrestamosActivos(listaPrestamos);
+    //}
 
     //------------------------------ Métodos para CRUD de libros ------------------------------
     private static void crearLibro(ModelFactory modelFactory) {
@@ -156,7 +157,7 @@ public class Main {
         if (resultado) {
             System.out.println(mensaje );
         } else {
-            System.out.println("No se pudo " + mensaje);
+            System.out.println(" " + mensaje);
         }
     }
 }

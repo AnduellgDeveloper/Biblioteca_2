@@ -3,6 +3,7 @@ import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Biblioteca;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Libro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Miembro;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Prestamo;
+import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.builder.LibroBuilder;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.services.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,30 +26,131 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
 
     public static void inicializarDatos() {
         biblioteca = new Biblioteca();
+
+        // Uso del Builder para crear libros
         List<Libro> listaLibros = new ArrayList<>();
-        listaLibros.add(new Libro("La Divina Comedia", "Dante Alighieri", "Poesía épica", 4589));
-        listaLibros.add(new Libro("Boulevard", "Flor M. Salvador", "Romance juvenil", 89021));
-        listaLibros.add(new Libro("Cien Años de Soledad", "Gabriel García Márquez", "Realismo mágico", 12345));
-        listaLibros.add(new Libro("El Amor en los Tiempos del Cólera", "Gabriel García Márquez", "Romance", 67890));
-        listaLibros.add(new Libro("1984", "George Orwell", "Distopía", 11223));
-        listaLibros.add(new Libro("Orgullo y Prejuicio", "Jane Austen", "Romance clásico", 44556));
-        listaLibros.add(new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", "Novela", 77889));
-        listaLibros.add(new Libro("El Principito", "Antoine de Saint-Exupéry", "Fábula", 99887));
-        listaLibros.add(new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", "Misterio", 66554));
-        listaLibros.add(new Libro("Ficciones", "Jorge Luis Borges", "Ficción", 54321));
+        listaLibros.add(new LibroBuilder()
+                .titulo("La Divina Comedia")
+                .autor("Dante Alighieri")
+                .genero("Poesía épica")
+                .isbn(4589)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("Boulevard")
+                .autor("Flor M. Salvador")
+                .genero("Romance juvenil")
+                .isbn(89021)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("Cien Años de Soledad")
+                .autor("Gabriel García Márquez")
+                .genero("Realismo mágico")
+                .isbn(12345)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("El Amor en los Tiempos del Cólera")
+                .autor("Gabriel García Márquez")
+                .genero("Romance")
+                .isbn(67890)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("1984")
+                .autor("George Orwell")
+                .genero("Distopía")
+                .isbn(11223)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("Orgullo y Prejuicio")
+                .autor("Jane Austen")
+                .genero("Romance clásico")
+                .isbn(44556)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("Don Quijote de la Mancha")
+                .autor("Miguel de Cervantes")
+                .genero("Novela")
+                .isbn(77889)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("El Principito")
+                .autor("Antoine de Saint-Exupéry")
+                .genero("Fábula")
+                .isbn(99887)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("La Sombra del Viento")
+                .autor("Carlos Ruiz Zafón")
+                .genero("Misterio")
+                .isbn(66554)
+                .build());
+
+        listaLibros.add(new LibroBuilder()
+                .titulo("Ficciones")
+                .autor("Jorge Luis Borges")
+                .genero("Ficción")
+                .isbn(54321)
+                .build());
+
         System.out.println("Total libros agregados: " + listaLibros.size());
         biblioteca.setListaLibros(listaLibros);
+
+        // Uso del Builder para crear miembros
         List<Miembro> listaMiembros = new ArrayList<>();
-        listaMiembros.add(new Miembro("Duvan Felipe", 1234));
-        listaMiembros.add(new Miembro("Nicol Marin", 5689));
-        listaMiembros.add(new Miembro("Majo Tovar", 8910));
-        listaMiembros.add(new Miembro("carlos",2345671));
+        listaMiembros.add(Miembro.builder()
+                .nombre("Duvan Felipe")
+                .cedula(1234)
+                .build());
+
+        listaMiembros.add(Miembro.builder()
+                .nombre("Nicol Marin")
+                .cedula(5689)
+                .build());
+
+        listaMiembros.add( Miembro.builder()
+                .nombre("Majo Tovar")
+                .cedula(8910)
+                .build());
+
+        listaMiembros.add(Miembro.builder()
+                .nombre("Carlos")
+                .cedula(2345671)
+                .build());
+
         System.out.println("Total miembros agregados: " + listaMiembros.size());
         biblioteca.setListaMiembros(listaMiembros);
+
+        // Uso del Builder para crear préstamos
         List<Prestamo> listaPrestamos = new ArrayList<>();
-        listaPrestamos.add(new Prestamo(listaLibros.get(0), listaMiembros.get(0), "Activo", LocalDateTime.now(), null));
-        listaPrestamos.add(new Prestamo(listaLibros.get(1), listaMiembros.get(1), "Activo", LocalDateTime.now(), null));
-        listaPrestamos.add(new Prestamo(listaLibros.get(2), listaMiembros.get(2), "Activo", LocalDateTime.now(), null));
+
+        listaPrestamos.add(Prestamo.builder()
+                .libro(listaLibros.get(0))
+                .miembro(listaMiembros.get(0))
+                .estado("Activo")
+                .fechaPrestamo(LocalDateTime.now())
+                .build());
+
+        listaPrestamos.add(Prestamo.builder()
+                .libro(listaLibros.get(1))
+                .miembro(listaMiembros.get(1))
+                .estado("Activo")
+                .fechaPrestamo(LocalDateTime.now())
+                .build());
+
+        listaPrestamos.add( Prestamo.builder()
+                .libro(listaLibros.get(2))
+                .miembro(listaMiembros.get(2))
+                .estado("Activo")
+                .fechaPrestamo(LocalDateTime.now())
+                .build());
+
         System.out.println("Total préstamos agregados: " + listaPrestamos.size());
         biblioteca.setListaPrestamos(listaPrestamos);
     }
@@ -167,8 +269,8 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
     //------------------------------ Métodos para CRUD de préstamos ModelFactory ------------------------------
 
     @Override
-    public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
-        return biblioteca.crearPrestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion);
+    public boolean crearPrestamo(Libro libro, Miembro miembro, String estado, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion,int idPrestamo) {
+        return biblioteca.crearPrestamo(libro, miembro, estado, fechaPrestamo, fechaDevolucion,idPrestamo);
     }
 
     @Override

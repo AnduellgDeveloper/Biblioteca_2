@@ -2,6 +2,7 @@ package co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.builder;
 import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.Libro;
 
 public class LibroBuilder {
+    protected Libro libro;
     protected String titulo;
     protected String autor;
     protected String genero;
