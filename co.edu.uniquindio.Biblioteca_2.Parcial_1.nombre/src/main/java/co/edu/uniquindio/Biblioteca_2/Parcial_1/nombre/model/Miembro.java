@@ -3,6 +3,8 @@ import co.edu.uniquindio.Biblioteca_2.Parcial_1.nombre.model.builder.MiembroBuil
 public class Miembro  {
     private String nombre;
     private int cedula;
+    private int edad;
+
     public Miembro(String nombre, int cedula) {
         this.nombre = nombre;
         this.cedula = cedula;

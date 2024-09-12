@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
+public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud, IRevistaCrud {
     private static ModelFactory modelFactory;
     private static Biblioteca biblioteca;
 
@@ -153,6 +153,26 @@ public class ModelFactory implements IBibliotecarioCrud, IGestionInventario, ILi
 
         System.out.println("Total préstamos agregados: " + listaPrestamos.size());
         biblioteca.setListaPrestamos(listaPrestamos);
+    }
+
+    @Override
+    public boolean crearRevista(int idRevista, String editorial, int numeroPaginas, String estado, String descripcion) {
+        return biblioteca.crearRevista(idRevista, editorial, numeroPaginas, estado, descripcion);
+    }
+
+    @Override
+    public String verRevista(int idRevista, String editorial, int numeroPaginas, String estado, String descripcion) {
+        return biblioteca.verRevista(idRevista, editorial, numeroPaginas, estado, descripcion);
+    }
+
+    @Override
+    public boolean actualizarRevista(int idRevista, String nuevaEditorial, int nuevoNumeroPaginas) {
+        return biblioteca.actualizarRevista(idRevista, nuevaEditorial, nuevoNumeroPaginas);
+    }
+
+    @Override
+    public boolean eliminarRevista(int idRevista) {
+        return biblioteca.eliminarRevista(idRevista);
     }
 
     @Override

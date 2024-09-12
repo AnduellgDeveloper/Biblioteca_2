@@ -7,7 +7,7 @@ import java.util.Objects;
 
 
 
-public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud {
+public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud, IRevistaCrud{
     private List<Prestamo> listaPrestamos = new ArrayList<>();
     private List<Libro> listaLibros = new ArrayList<>();
     private List<Comic> listaComics = new ArrayList<>();
@@ -317,4 +317,50 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
         return prestamosActivos;
     }
 
-}
+
+    //------------------------------ Métodos del Parcial(Revista)------------------------------
+    @Override
+    public boolean crearRevista(int idRevista, String editorial, int numeroPaginas, String estado, String descripcion) {
+        if (obtenerRevista(idRevista) == null) {
+            Revista nuevaRevista = new Revista(idRevista, editorial, numeroPaginas, estado, descripcion);
+            listaRevistas.add(nuevaRevista);
+            return true;
+        }
+        return false;
+    }
+    @Override
+    public String verRevista(int idRevista, String editorial, int numeroPaginas, String estado, String descripcion) {
+        Revista revista = obtenerRevista(idRevista);
+        if (revista != null) {
+            return revista.toString();
+        }
+        return "Revista no encontrada";
+    }
+    @Override
+    public boolean actualizarRevista(int idRevista, String nuevaEditorial, int nuevoNumeroPaginas) {
+        Revista revista = obtenerRevista(idRevista);
+        if (revista != null) {
+            revista.setEditorial(nuevaEditorial);
+            revista.setNumeroPaginas(nuevoNumeroPaginas);
+            return true;
+        }
+        return false;
+    }
+    @Override
+    public boolean eliminarRevista(int idRevista) {
+        Revista revista = obtenerRevista(idRevista);
+        if (revista != null) {
+            listaRevistas.remove(revista);
+            return true;
+        }
+        return false;
+    }
+    private Revista obtenerRevista(int idRevista) {
+        for (Revista revista : listaRevistas) {
+            if (revista.getIdRevista() == idRevista) {
+                return revista;
+            }
+        }
+        return null;
+    }
+    }

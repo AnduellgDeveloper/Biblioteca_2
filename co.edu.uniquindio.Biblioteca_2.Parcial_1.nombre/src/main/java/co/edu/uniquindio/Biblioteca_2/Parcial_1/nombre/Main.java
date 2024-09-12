@@ -9,10 +9,13 @@ public class Main {
     public static void main(String[] args) {
         ModelFactory modelFactory = ModelFactory.getInstance();
         modelFactory.inicializarDatos();
-        gestionarPrestamos(modelFactory);
-        gestionarLibros(modelFactory);
-        gestionarMiembros(modelFactory);
+        //gestionarPrestamos(modelFactory);
+        //gestionarLibros(modelFactory);
+        //gestionarMiembros(modelFactory);
+        gestionarRevistas(modelFactory);
     }
+    //Se aplica Open/Closed, interface Segregation y single responsability
+
     private static void gestionarPrestamos(ModelFactory modelFactory) {
         crearPrestamo(modelFactory);
         verPrestamo(modelFactory);
@@ -37,6 +40,46 @@ public class Main {
         eliminarMiembro(modelFactory);
         verMiembros(modelFactory);
     }
+    private static void gestionarRevistas(ModelFactory modelFactory){
+        crearRevista(modelFactory);
+        verRevista(modelFactory);
+        actualizarRevista(modelFactory);
+        eliminarRevista(modelFactory);
+
+    }
+    //------------------------------ Métodos para CRUD de Revista ------------------------------
+    private static void crearRevista(ModelFactory modelFactory){
+        int idRevista = 1;
+        String editorial = " 1984";
+        int numeroPaginas = 100;
+        String estado = " Distopia";
+        String descripcion = "HOLA MUNDO!";
+        boolean resultado = modelFactory.crearRevista(idRevista, editorial, numeroPaginas, estado, descripcion);
+        notificacion(resultado, "Revista creada:\n"+"Revista: "+idRevista+" Editorial: " +editorial+ "Numero de Paginas: "+numeroPaginas+
+                "Estado: "+estado+" Descripcion: "+descripcion);
+    }
+    private static void verRevista(ModelFactory modelFactory) {
+        int idRevista = 1;
+        String editorial = " 1984";
+        int numeroPaginas = 1;
+        String estado = " Distopia";
+        String descripcion = "";
+        String revista = modelFactory.verRevista(idRevista, editorial, numeroPaginas, estado, descripcion);
+        System.out.println("Detalle de Revista: " + revista);
+    }
+    private static void actualizarRevista(ModelFactory modelFactory){
+        int idRevista = 11223;
+        String nuevaEditorial = "Rebelión en la Granja";
+        int nuevoNumeroPaginas = 200;
+        boolean resultado = modelFactory.actualizarRevista(idRevista, nuevaEditorial,nuevoNumeroPaginas);
+        notificacion(resultado, "Revista actualizada: "+  nuevaEditorial + "de" +nuevoNumeroPaginas);
+    }
+    private static void eliminarRevista(ModelFactory modelFactory) {
+        int idRevista = 1;
+        boolean resultado = modelFactory.eliminarRevista(idRevista);
+        notificacion(resultado, "Revista eliminada: " + idRevista);
+    }
+
     //------------------------------ Métodos para CRUD de préstamos ------------------------------
     private static void crearPrestamo(ModelFactory modelFactory) {
         Libro libro = new Libro("Cien Años de Soledad", "Gabriel García Márquez","Realismo magico", 12345);
