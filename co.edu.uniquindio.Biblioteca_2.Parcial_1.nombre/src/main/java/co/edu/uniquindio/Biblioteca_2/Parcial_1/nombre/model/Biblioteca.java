@@ -7,7 +7,7 @@ import java.util.Objects;
 
 
 
-public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud, IRevistaCrud{
+public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibroCrud, IMiembroCrud, IPrestamoCrud, IRevistaCrud {
     private List<Prestamo> listaPrestamos = new ArrayList<>();
     private List<Libro> listaLibros = new ArrayList<>();
     private List<Comic> listaComics = new ArrayList<>();
@@ -16,49 +16,114 @@ public class Biblioteca implements IBibliotecarioCrud, IGestionInventario, ILibr
     private List<List<?>> listaItems = new ArrayList<>();
     private List<Miembro> listaMiembros = new ArrayList<>();
     private List<Bibliotecario> listaBibliotecarios = new ArrayList<>();
-   //---------------------------- Getters y Setters ------------------------------
-    public List<Comic> getListaComics() {return listaComics;}
-    public void setListaComics(List<Comic> listaComics) {this.listaComics = listaComics;}
-    public List<Revista> getListaRevistas() {return listaRevistas;}
-    public void setListaRevistas(List<Revista> listaRevistas) {this.listaRevistas = listaRevistas;}
-    public List<Dvd> getListaDvds() {return listaDvds;}
-    public void setListaDvds(List<Dvd> listaDvds) {this.listaDvds = listaDvds;}
-    public List<List<?>> getListaItems() {return listaItems;}
-    public void setListaItems(List<List<?>> listaItems) {this.listaItems = listaItems;}
-    public void setListaLibros(List<Libro> listaLibros) {this.listaLibros = listaLibros;}
-    public List<Libro> getListaLibros() {return listaLibros;}
-    public List<Prestamo> getListaPrestamos() {return listaPrestamos;}
-    public void setListaPrestamos(List<Prestamo> listaPrestamos) {this.listaPrestamos = listaPrestamos;}
-    public List<Miembro> getListaMiembros() {return listaMiembros;}
-    public void setListaMiembros(List<Miembro> listaMiembros) {this.listaMiembros = listaMiembros;}
-    public List<Bibliotecario> getListaBibliotecarios() {return listaBibliotecarios;}
-    public void setListaBibliotecarios(List<Bibliotecario> listaBibliotecarios) {this.listaBibliotecarios = listaBibliotecarios;}
 
-    public Biblioteca (){
+    //---------------------------- Getters y Setters ------------------------------
+    public List<Comic> getListaComics() {
+        return listaComics;
+    }
+
+    public void setListaComics(List<Comic> listaComics) {
+        this.listaComics = listaComics;
+    }
+
+    public List<Revista> getListaRevistas() {
+        return listaRevistas;
+    }
+
+    public void setListaRevistas(List<Revista> listaRevistas) {
+        this.listaRevistas = listaRevistas;
+    }
+
+    public List<Dvd> getListaDvds() {
+        return listaDvds;
+    }
+
+    public void setListaDvds(List<Dvd> listaDvds) {
+        this.listaDvds = listaDvds;
+    }
+
+    public List<List<?>> getListaItems() {
+        return listaItems;
+    }
+
+    public void setListaItems(List<List<?>> listaItems) {
+        this.listaItems = listaItems;
+    }
+
+    public void setListaLibros(List<Libro> listaLibros) {
+        this.listaLibros = listaLibros;
+    }
+
+    public List<Libro> getListaLibros() {
+        return listaLibros;
+    }
+
+    public List<Prestamo> getListaPrestamos() {
+        return listaPrestamos;
+    }
+
+    public void setListaPrestamos(List<Prestamo> listaPrestamos) {
+        this.listaPrestamos = listaPrestamos;
+    }
+
+    public List<Miembro> getListaMiembros() {
+        return listaMiembros;
+    }
+
+    public void setListaMiembros(List<Miembro> listaMiembros) {
+        this.listaMiembros = listaMiembros;
+    }
+
+    public List<Bibliotecario> getListaBibliotecarios() {
+        return listaBibliotecarios;
+    }
+
+    public void setListaBibliotecarios(List<Bibliotecario> listaBibliotecarios) {
+        this.listaBibliotecarios = listaBibliotecarios;
+    }
+
+    public Biblioteca() {
         listaItems.add(listaLibros);
         listaItems.add(listaComics);
         listaItems.add(listaRevistas);
         listaItems.add(listaDvds);
     }
+
     //------------------------------ Métodos de IGestionInventario ------------------------------
     @Override
     public void gestionarItem() {
     }
+
     @Override
     public void agregarItem() {
     }
+
     @Override
     public void removerItem() {
     }
+
     @Override
     public void mostrarItem() {
         listaLibros.forEach(System.out::println);
     }
+
     @Override
     public void mostrarLibroPorTitulo() {
     }
+
     //------------------------------ Métodos de IMiembroCrud ------------------------------
-    @Override
+    public List<Miembro> buscarMiembrosPorEdad(int edad) {
+        List<Miembro> resultado = new ArrayList<>();
+        for (Miembro miembro : miembros) {
+            if (miembro.getEdad() > edadMinima) {
+                resultado.add(miembro);
+
+                System.out.println("Miembro encontrado: " + miembro);
+            }
+        }
+        return resultado;
+    }
+        @Override
     public boolean crearMiembro(String nombre, int cedula) {
         if (obtenerMiembro(String.valueOf(cedula)) == null) {
             Miembro nuevoMiembro = new Miembro(nombre, cedula);

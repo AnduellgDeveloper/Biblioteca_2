@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
         ModelFactory modelFactory = ModelFactory.getInstance();
         modelFactory.inicializarDatos();
-        //gestionarPrestamos(modelFactory);
-        //gestionarLibros(modelFactory);
-        //gestionarMiembros(modelFactory);
+        gestionarPrestamos(modelFactory);
+        gestionarLibros(modelFactory);
+        gestionarMiembros(modelFactory);
         gestionarRevistas(modelFactory);
     }
     //Se aplica Open/Closed, interface Segregation y single responsability
@@ -79,7 +79,6 @@ public class Main {
         boolean resultado = modelFactory.eliminarRevista(idRevista);
         notificacion(resultado, "Revista eliminada: " + idRevista);
     }
-
     //------------------------------ Métodos para CRUD de préstamos ------------------------------
     private static void crearPrestamo(ModelFactory modelFactory) {
         Libro libro = new Libro("Cien Años de Soledad", "Gabriel García Márquez","Realismo magico", 12345);
